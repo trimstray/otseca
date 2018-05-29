@@ -332,6 +332,8 @@ function __main__() {
   _dump_dir="${_out}/dump.${_sdate}"
   _dump_log="${_dump_dir}/dump.log"
 
+  _log_stdout="$_dump_log"
+
   _sprintf "head" "Init environment"
 
   # shellcheck disable=SC2154
