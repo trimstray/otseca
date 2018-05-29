@@ -234,15 +234,14 @@ function __main__() {
 
   clear
 
-  # Init background tasks.
-  _sprintf "head" "Background tasks..."
+  printf "\\e[1;31m%s\\e[m \\e[2;32m%s\\e[m \\e[1;41m%s\\e[m\\n\\n" ":::" "otseca" "v1.0.0"
 
-  _init_function "temp ${CHECK_CONNECTION}"
+  _sprintf "head" "(task 1) Search system information"
 
   # Information gathering.
   for _res in "${EXTERNAL_RESOURCES[@]}" ; do
 
-    _init_function "temp \"${_res}\""
+    _init_function "echo \"${_res}\""
 
     if [[ "$_kstate" -eq 255 ]] ; then
 
@@ -251,6 +250,8 @@ function __main__() {
     fi
 
   done
+
+  _sprintf "head" "(task 2) Dump system information"
 
   # ````````````````````````````````````````````````````````````````````````````
 
