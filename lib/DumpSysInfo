@@ -21,11 +21,13 @@ function DumpSysInfo() {
   local _FUNCTION_ID="DumpSysInfo"
   local _STATE=0
 
+  local _arg=("${@:1}")
+
   _msg_args+=(\
-  "checking conn: ${_addr}:${_port}")
+  "rule: \"${_arg[@]}\"")
 
   _cmd_args+=(\
-  "eval timeout 1 bash -c \"</dev/tcp/${_addr}/${_port}\"")
+  "eval ${_arg[@]}")
 
   _STATE="$?"
 
