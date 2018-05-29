@@ -351,11 +351,13 @@ function __main__() {
     "${_FUNCTION_ID}()" \
     "create dump directory: ${_out}/dump.${_sdate}"
 
-  _sprintf "head" "Search system information"
+  # ----------------------------------------------------------------------------
+
+  _sprintf "head" "Dump system information"
 
   for _res in "${SEARCH_STACK[@]}" ; do
 
-    _init_function "SearchSysInfo \"${_res}\""
+    _init_function "DumpSysInfo \"${_res}\""
 
     if [[ "$_kstate" -eq 255 ]] ; then
 
@@ -365,7 +367,9 @@ function __main__() {
 
   done
 
-  _sprintf "head" "Dump system information"
+  # ----------------------------------------------------------------------------
+
+
 
   # ````````````````````````````````````````````````````````````````````````````
 
