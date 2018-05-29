@@ -356,11 +356,11 @@ function __main__() {
     "${_FUNCTION_ID}()" \
     "create dump directory: ${_dump_dir}"
 
+  _sprintf "info" "set log file"
+
   # ----------------------------------------------------------------------------
 
   _sprintf "head" "Dump system information"
-
-  _sprintf "info" "set log file"
 
   for _res in "${SEARCH_STACK[@]}" ; do
 
