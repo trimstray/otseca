@@ -333,6 +333,8 @@ function __main__() {
   # shellcheck disable=SC2034
   _dump_log="${_dump_dir}/dump.log"
 
+  echo
+
   _sprintf "head" "Init environment"
 
   # shellcheck disable=SC2154
@@ -359,6 +361,8 @@ function __main__() {
   _sprintf "info" "set log file"
 
   # ----------------------------------------------------------------------------
+
+  echo
 
   _sprintf "head" "Dump system information"
 
