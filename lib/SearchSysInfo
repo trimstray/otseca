@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+# shellcheck shell=bash
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: SearchSysInfo()
+#
+# Description:
+#   Search system information.
+#
+# Usage:
+#   SearchSysInfo
+#
+# Examples:
+#   SearchSysInfo
+#
+
+function SearchSysInfo() {
+
+  # shellcheck disable=SC2034
+  local _FUNCTION_ID="SearchSysInfo"
+  local _STATE=0
+
+  _msg_args+=(\
+  "checking conn: ${_addr}:${_port}")
+
+  _cmd_args+=(\
+  "eval timeout 1 bash -c \"</dev/tcp/${_addr}/${_port}\"")
+
+  _STATE="$?"
+
+  return $_STATE
+
+}
