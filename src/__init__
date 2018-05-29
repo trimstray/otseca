@@ -23,6 +23,9 @@ function __main__() {
   readonly _log_stdout="${_log_directory}/stdout.log"
   readonly _log_path="${_log_directory}/${_log_file}"
 
+  # Set script version.
+  local _version="v1.0.0"
+
   # We check if we are a root user.
   if [[ "$EUID" -ne 0 ]] ; then
 
@@ -234,12 +237,98 @@ function __main__() {
 
   clear
 
-  printf "\\e[1;31m%s\\e[m \\e[2;32m%s\\e[m \\e[1;41m%s\\e[m\\n\\n" ":::" "otseca" "v1.0.0"
+  _t_rst="1"
+  _t_sst="60"
+
+  _t_bar="2;39"
+
+  # ----------------------------------------------------------------------------
+
+  _t_rst=$((_t_rst + 1))
+  tput cup "$_t_rst" 0 ;
+
+  printf "\\e[${_t_bar}m%s\\e[m" \
+         "+-----------------------------------------------------------+"
+
+  # ----------------------------------------------------------------------------
+
+  _t_rst=$((_t_rst + 1))
+  tput cup "$_t_rst" 0 ; printf "\\e[${_t_bar}m%s\\e[m" ":"
+  tput cup "$_t_rst" "$_t_sst" ; printf "\\e[${_t_bar}m%s\\e[m" ":"
+
+  # ----------------------------------------------------------------------------
+
+  _t_rst=$((_t_rst + 1))
+  tput cup "$_t_rst" 0 ; printf "\\e[${_t_bar}m%s\\e[m" ":"
+
+  printf "%s\\e[1;31m%s\\e[m \\e[2;32m%s\\e[m \\e[1;37m%s\\e[m \\e[1;41m%s\\e[m" \
+         "         " \
+         "Φ"  \
+         "otseca" \
+         "$_version" \
+         "security audit script"
+
+  tput cup "$_t_rst" "$_t_sst" ; printf "\\e[${_t_bar}m%s\\e[m" ":"
+
+  # ----------------------------------------------------------------------------
+
+  _t_rst=$((_t_rst + 1))
+  tput cup "$_t_rst" 0 ; printf "\\e[${_t_bar}m%s\\e[m" ":"
+  tput cup "$_t_rst" "$_t_sst" ; printf "\\e[${_t_bar}m%s\\e[m" ":"
+
+  # ----------------------------------------------------------------------------
+
+  _t_rst=$((_t_rst + 1))
+  tput cup "$_t_rst" 0 ; printf "\\e[${_t_bar}m%s\\e[m" ":"
+
+  printf "%s\\e[1;37m%s\\e[m \\e[2;37m%s\\e[m" \
+         "       " \
+         "Project:"  \
+         "https://github.com/trimstray/otseca"
+
+  tput cup "$_t_rst" "$_t_sst" ; printf "\\e[${_t_bar}m%s\\e[m" ":"
+
+  # ----------------------------------------------------------------------------
+
+  _t_rst=$((_t_rst + 1))
+  tput cup "$_t_rst" 0 ; printf "\\e[${_t_bar}m%s\\e[m" ":"
+  tput cup "$_t_rst" "$_t_sst" ; printf "\\e[${_t_bar}m%s\\e[m" ":"
+
+  # ----------------------------------------------------------------------------
+
+  _t_rst=$((_t_rst + 1))
+  tput cup "$_t_rst" 0 ; printf "\\e[${_t_bar}m%s\\e[m" ":"
+
+  printf "%s\\e[0;36m%s\\e[m" \
+         "              " \
+         "Debian GNU/Linux, CentOS Linux"
+
+  tput cup "$_t_rst" "$_t_sst" ; printf "\\e[${_t_bar}m%s\\e[m" ":"
+
+  # ----------------------------------------------------------------------------
+
+  _t_rst=$((_t_rst + 1))
+  tput cup "$_t_rst" 0 ; printf "\\e[${_t_bar}m%s\\e[m" ":"
+  tput cup "$_t_rst" "$_t_sst" ; printf "\\e[${_t_bar}m%s\\e[m" ":"
+
+  # ----------------------------------------------------------------------------
+
+  _t_rst=$((_t_rst + 1))
+  tput cup "$_t_rst" 0 ;
+
+  printf "\\e[${_t_bar}m%s\\e[m" \
+         "+-----------------------------------------------------------+"
+
+  # ----------------------------------------------------------------------------
+
+  _t_rst=$((_t_rst + 3))
+  tput cup "$_t_rst" 0
+
+  # ----------------------------------------------------------------------------
 
   _sprintf "head" "(task 1) Search system information"
 
-  # Information gathering.
-  for _res in "${EXTERNAL_RESOURCES[@]}" ; do
+  for _res in "${INFO_STACK[@]}" ; do
 
     _init_function "echo \"${_res}\""
 
