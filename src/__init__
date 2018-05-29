@@ -326,11 +326,36 @@ function __main__() {
 
   # ----------------------------------------------------------------------------
 
-  _sprintf "head" "(task 1) Search system information"
+  _sdate=$(date +%s)
 
-  for _res in "${INFO_STACK[@]}" ; do
+  _sprintf "head" "Init environment"
 
-    _init_function "echo \"${_res}\""
+  # shellcheck disable=SC2154
+  if [[ ! -d "$_out" ]] ; then
+
+    _sprintf "info" "create output directory"
+
+    mkdir -p "$_out"
+
+    _logger "info" \
+      "${_FUNCTION_ID}()" \
+      "create output directory: $_out"
+
+  fi
+
+  _sprintf "info" "create dump directory: dump.${_sdate}"
+
+  mkdir -p "${_out}/dump.${_sdate}"
+
+  _logger "info" \
+    "${_FUNCTION_ID}()" \
+    "create dump directory: ${_out}/dump.${_sdate}"
+
+  _sprintf "head" "Search system information"
+
+  for _res in "${SEARCH_STACK[@]}" ; do
+
+    _init_function "SearchSysInfo \"${_res}\""
 
     if [[ "$_kstate" -eq 255 ]] ; then
 
@@ -340,7 +365,7 @@ function __main__() {
 
   done
 
-  _sprintf "head" "(task 2) Dump system information"
+  _sprintf "head" "Dump system information"
 
   # ````````````````````````````````````````````````````````````````````````````
 
