@@ -215,12 +215,12 @@ function _sprintf() {
   if [[ "$_s_type" == "head" ]] ; then
 
     s_char="+"
-    s_trgb="1;36"
+    s_trgb="1;33"
 
   elif [[ "$_s_type" == "info" ]] ; then
 
     s_char="-"
-    s_trgb="0;33"
+    s_trgb="0;32"
 
   elif [[ "$_s_type" == "warn" ]] ; then
 
