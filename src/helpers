@@ -247,7 +247,8 @@ function _sprintf() {
       # Process id of the previous running command.
       local _pid="$_s_info"
 
-      local _sc='-\|/'
+      # local _sc='-\|/'
+      local _sc=''
 
       # Verify that the process is still running.
       local _n="0"
@@ -256,7 +257,7 @@ function _sprintf() {
       while [[ $(ps a | awk '{print $1}' | grep -w "$_pid") ]] ; do
 
         _n=$(( ( _n + 1 ) % 4 ))
-        printf "\\r[%s]" "${_sc:_n:1}"
+        printf "\\e[2;4;4${_n}m%s\\e[m\\r%s" ">->->" "${_sc:_n:1}"
         sleep 0.1
 
       done
@@ -274,7 +275,9 @@ function _sprintf() {
       # shellcheck disable=SC2154
       if [[ "$printf_mode" == "verbose" ]] && [[ "$_s_type" == "info" ]] ; then
 
-        printf '[\e['${s_trgb}'m%s\e[m] %s\n' "$s_char" "$_s_info"
+        c_trgb="2;2;38"
+
+        printf '    \e['${s_trgb}'m%s\e[m \e['${c_trgb}'m%s\e[m\n' "$s_char" "$_s_info"
 
       else
 
@@ -284,9 +287,9 @@ function _sprintf() {
 
           if [[ "$s_color" == "true" ]] ; then
 
-            c_trgb="1;39"
+            c_trgb="1;1;34"
 
-            printf '[\e['${s_trgb}'m%s\e[m] \e['${c_trgb}'m%s\e[m\n' "$s_char" "$_s_info"
+            printf '[\e['${s_trgb}'m%s\e[m] --[ \e['${c_trgb}'m%s\e[m ]--\n' "$s_char" "$_s_info"
 
           else
 
