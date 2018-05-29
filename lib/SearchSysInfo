@@ -21,12 +21,6 @@ function SearchSysInfo() {
   local _FUNCTION_ID="SearchSysInfo"
   local _STATE=0
 
-  _msg_args+=(\
-  "checking conn: ${_addr}:${_port}")
-
-  _cmd_args+=(\
-  "eval timeout 1 bash -c \"</dev/tcp/${_addr}/${_port}\"")
-
   _STATE="$?"
 
   return $_STATE
