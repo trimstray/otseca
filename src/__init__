@@ -328,6 +328,10 @@ function __main__() {
 
   _sdate=$(date +%s)
 
+  # shellcheck disable=SC2154
+  _dump_dir="${_out}/dump.${_sdate}"
+  _dump_log="${_dump_dir}/dump.log"
+
   _sprintf "head" "Init environment"
 
   # shellcheck disable=SC2154
@@ -343,17 +347,19 @@ function __main__() {
 
   fi
 
-  _sprintf "info" "create dump directory: dump.${_sdate}"
+  _sprintf "info" "create dump directory"
 
-  mkdir -p "${_out}/dump.${_sdate}"
+  mkdir -p "${_dump_dir}"
 
   _logger "info" \
     "${_FUNCTION_ID}()" \
-    "create dump directory: ${_out}/dump.${_sdate}"
+    "create dump directory: ${_dump_dir}"
 
   # ----------------------------------------------------------------------------
 
   _sprintf "head" "Dump system information"
+
+  _sprintf "info" "set log file"
 
   for _res in "${SEARCH_STACK[@]}" ; do
 
