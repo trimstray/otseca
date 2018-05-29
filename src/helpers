@@ -215,7 +215,7 @@ function _sprintf() {
   if [[ "$_s_type" == "head" ]] ; then
 
     s_char="+"
-    s_trgb="1;32"
+    s_trgb="1;36"
 
   elif [[ "$_s_type" == "info" ]] ; then
 
