@@ -24,7 +24,7 @@ function DumpSysInfo() {
   local _arg=("${@:1}")
 
   _msg_args+=(\
-  "task: \"${_arg[@]}\"")
+  "cmd: \"${_arg[@]}\"")
 
   _cmd_args+=(\
   "eval ${_arg[@]}")
