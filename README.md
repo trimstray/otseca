@@ -47,7 +47,7 @@
 
 **<u>Otseca</u>** is a open source security audit tool to search and dump system configuration.
 
-For more information, see See **<a href="https://github.com/trimstray/otseca/wiki">wiki</a>**.
+For more information, see **<a href="https://github.com/trimstray/otseca/wiki">wiki</a>**.
 
 ## How To Use
 
