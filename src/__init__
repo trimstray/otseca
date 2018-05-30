@@ -393,7 +393,11 @@ function __main__() {
 
   _fdate=$(date "+%d.%m.%Y %H:%M")
 
+  # shellcheck disable=SC2154
+  _default_report="${_temp}/report"
   _report="${_out}/report"
+
+  cp -R "${_default_report}" "${_report}"
 
   # shellcheck disable=SC2034,SC2154
   _output_report="${_report}/index.html"
@@ -428,6 +432,16 @@ function __main__() {
 
   sed -i "s/__VERSION__/${_version}/g" "${_output_report}"
   sed -i "s/__DATE__/${_fdate}/g" "${_output_report}"
+
+  for i in "${_output_prefix}" "${_output_postfix}" "${_output_data}" ; do
+
+    if [[ -e "$i" ]] ; then
+
+      rm -fr "${i}"
+
+    fi
+
+  done
 
   # shellcheck disable=SC2154,SC2164
   cd "${_wdir}"
