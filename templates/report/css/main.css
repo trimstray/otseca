@@ -87,7 +87,7 @@ h2.title {
   font-size: 30px;
   font-weight: 300;
   line-height: 32px;
-  margin: 20px 0 72px;
+  margin: 20px 0 22px;
   text-align: center;
 }
 
@@ -107,7 +107,17 @@ p.date {
   font-size: 12px;
   font-weight: 300;
   line-height: 12px;
-  margin: 10px 0 72px;
+  margin: 20px 0 42px;
+  text-align: center;
+}
+
+p.link {
+  color: #111;
+  font-family: Lato-Bold;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 32px;
+  margin: 0px 0 42px;
   text-align: center;
 }
 
@@ -281,6 +291,16 @@ th, td {
 
 .table100.ver1 .ps__rail-y .ps__thumb-y::before {
   background-color: #778899;
+}
+
+a {
+  color: #111;
+  font-family: Lato-Bold;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 32px;
+  margin: 20px 0 2px;
+  text-align: center;
 }
 
 code, .code,
