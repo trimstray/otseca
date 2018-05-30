@@ -367,7 +367,7 @@ function _init_cmd() {
   # Execute command and exit save to file.
   # shellcheck disable=SC2154
   printf "%s\\n%s\\n" \
-         "############ START #############" \
+         "###START###" \
          "$_msg" \
          >>"$_log_stdout" >>"$_dump_log" 2>&1
 
@@ -400,7 +400,7 @@ function _init_cmd() {
   fi
 
   printf "%s\\n" \
-         "############ STOP #############" \
+         "###STOP###" \
          >>"$_log_stdout" >>"$_dump_log" 2>&1
 
   _STATE="$_state"

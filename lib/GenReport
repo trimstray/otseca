@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+# shellcheck shell=bash
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: GenReport()
+#
+# Description:
+#   Generate report.
+#
+# Usage:
+#   GenReport
+#
+# Examples:
+#   GenReport
+#
+
+function GenReport() {
+
+  # shellcheck disable=SC2034
+  local _FUNCTION_ID="GenReport"
+  local _STATE=0
+
+  _msg_args+=(\
+  "added pre code" \
+  "added post code")
+
+  _cmd_args+=(\
+  "eval sed -i \"s/###START###/<pre><code>/g\" ${_dump_log}" \
+  "eval sed -i \"s/###STOP###/<pre><code>/g\" ${_dump_log}")
+
+  _STATE="$?"
+
+  return $_STATE
+
+}
