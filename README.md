@@ -81,7 +81,9 @@ Also you will need **root access**.
 
 ## Reports
 
-**Otseca** generates reports in html format. The report is in the `{otseca_dir}/data/output/report` directory.
+**Otseca** generates reports in html format. An example of the report can be found **<a href="https://github.com/trimstray/otseca/doc/preview/index.html">here</a>**. 
+
+> Default path for reports is `{otseca_dir}/data/output/report` directory.
 
 Reports consist of the following blocks:
 
