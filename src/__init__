@@ -46,6 +46,10 @@ function __main__() {
   # Declaration of output variables (--debug and --verbose params).
   stdout_mode=""
   printf_mode=""
+
+  # Do not exit with nonzero on commands failed.
+  ignore_errors="0"
+
   # Enable/disable output colors.
   # shellcheck disable=SC2034
   s_color="true"
@@ -114,7 +118,7 @@ function __main__() {
   # Specifies the call parameters of the script, the exact description
   # can be found in _help_ and file README.md.
   local _short_opt=""
-  local _long_opt="help,verbose"
+  local _long_opt="help,verbose,ignore-failed"
 
   _GETOPT_PARAMS=$(getopt -o "${_short_opt}" --long "${_long_opt}" \
                    -n "${_init_name}" -- "${__script_params[@]}")
@@ -147,6 +151,12 @@ function __main__() {
       --verbose)
 
         export printf_mode="verbose"
+
+        shift ;;
+
+      --ignore-failed)
+
+        export ignore_errors="1"
 
         shift ;;
 

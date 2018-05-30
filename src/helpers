@@ -389,11 +389,24 @@ function _init_cmd() {
 
   else
 
-    _sprintf "stop" "result: fail"
+    # shellcheck disable=SC2154
+    if [[ "$ignore_errors" -eq 0 ]] ; then
 
-    _logger "stop" \
-      "${_FUNCTION_ID}()" \
-      "result: fail"
+      _sprintf "stop" "result: fail"
+
+      _logger "stop" \
+        "${_FUNCTION_ID}()" \
+        " result: fail"
+
+    else
+
+      _sprintf "warn" "result: fail"
+
+      _logger "warn" \
+        "${_FUNCTION_ID}()" \
+        " result: fail"
+
+    fi
 
   fi
 
@@ -556,6 +569,7 @@ function _help_() {
   Options:
         --help                      show this message
         --verbose                   displays 'info' messages on the screen (verbose mode)
+        --ignore-failed             do not exit with nonzero on commands failed
 
 
   This program comes with ABSOLUTELY NO WARRANTY.
