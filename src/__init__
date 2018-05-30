@@ -366,7 +366,12 @@ function __main__() {
 
   _sprintf "head" "Dump system information"
 
-  for _res in "${SEARCH_STACK[@]}" ; do
+  _tcount=0
+
+  for _res in "${BASE_STACK[@]}" "${NETWORK_STACK[@]}" ; do
+
+    # shellcheck disable=SC2034
+    _tdate=$(date +%s)
 
     _init_function "DumpSysInfo \"${_res}\""
 
@@ -376,6 +381,8 @@ function __main__() {
 
     fi
 
+    _tcount=$((_tcount + 1))
+
   done
 
   # ----------------------------------------------------------------------------
@@ -384,8 +391,46 @@ function __main__() {
 
   _sprintf "head" "Generate report"
 
-  _init_function "GenReport"
+  _fdate=$(date "+%d.%m.%Y %H:%M")
 
+  _report="${_out}/report"
+
+  # shellcheck disable=SC2034,SC2154
+  _output_report="${_report}/index.html"
+  # shellcheck disable=SC2034,SC2154
+  _output_prefix="${_report}/prefix.html"
+  # shellcheck disable=SC2034,SC2154
+  _output_postfix="${_report}/postfix.html"
+  # shellcheck disable=SC2034,SC2154
+  _output_data="${_report}/body.html"
+
+  :> "${_output_report}"
+  :> "${_output_data}"
+
+  _wdir=$(pwd)
+
+  # shellcheck disable=SC2154,SC2164
+  cd "${_dump_dir}"
+
+  for i in $(find . -type f | sort -n -k 2) ; do
+
+    # shellcheck disable=SC2034
+    _command=$(grep "__COMMAND__" "$i" | cut -d ":" -f2)
+    # shellcheck disable=SC2034
+    _output=$(grep -v "__COMMAND__" "$i")
+
+    _init_function "GenReport"
+
+  done
+
+  cat "${_output_prefix}" "${_output_data}" "${_output_postfix}" \
+  >> "${_output_report}"
+
+  sed -i "s/__VERSION__/${_version}/g" "${_output_report}"
+  sed -i "s/__DATE__/${_fdate}/g" "${_output_report}"
+
+  # shellcheck disable=SC2154,SC2164
+  cd "${_wdir}"
 
   # ````````````````````````````````````````````````````````````````````````````
 
