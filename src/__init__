@@ -45,7 +45,7 @@ function __main__() {
 
   # Declaration of output variables (--debug and --verbose params).
   stdout_mode=""
-  printf_mode="verbose"
+  printf_mode=""
   # Enable/disable output colors.
   # shellcheck disable=SC2034
   s_color="true"
@@ -58,8 +58,8 @@ function __main__() {
 
   # shellcheck disable=SC2154
   # Temporary output file.
-  readonly _tmpA=$(mktemp "${_tmp}/output.XXXXXXXX")
-  readonly _tmpB=$(mktemp "${_tmp}/output.XXXXXXXX")
+  # readonly _tmpA=$(mktemp "${_tmp}/output.XXXXXXXX")
+  # readonly _tmpB=$(mktemp "${_tmp}/output.XXXXXXXX")
 
   # We place here used commands at script runtime, as strings to anything
   # unnecessarily run.
@@ -114,7 +114,7 @@ function __main__() {
   # Specifies the call parameters of the script, the exact description
   # can be found in _help_ and file README.md.
   local _short_opt=""
-  local _long_opt="help"
+  local _long_opt="help,verbose"
 
   _GETOPT_PARAMS=$(getopt -o "${_short_opt}" --long "${_long_opt}" \
                    -n "${_init_name}" -- "${__script_params[@]}")
@@ -143,6 +143,12 @@ function __main__() {
         _help_
 
         shift ; _exit_ "0" ;;
+
+      --verbose)
+
+        export printf_mode="verbose"
+
+        shift ;;
 
       *)
 

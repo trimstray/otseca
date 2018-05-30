@@ -247,8 +247,7 @@ function _sprintf() {
       # Process id of the previous running command.
       local _pid="$_s_info"
 
-      # local _sc='-\|/'
-      local _sc=''
+      local _sc='-\|/'
 
       # Verify that the process is still running.
       local _n="0"
@@ -257,7 +256,7 @@ function _sprintf() {
       while [[ $(ps a | awk '{print $1}' | grep -w "$_pid") ]] ; do
 
         _n=$(( ( _n + 1 ) % 4 ))
-        printf "\\e[2;4;4${_n}m%s\\e[m\\r%s" ">->->" "${_sc:_n:1}"
+        printf "\\r[%s]" "${_sc:_n:1}"
         sleep 0.1
 
       done
@@ -556,6 +555,7 @@ function _help_() {
 
   Options:
         --help                      show this message
+        --verbose                   displays 'info' messages on the screen (verbose mode)
 
 
   This program comes with ABSOLUTELY NO WARRANTY.
@@ -638,9 +638,9 @@ function _after_init() {
     "directory change error: '$_rel'"
 
   # shellcheck disable=SC2154
-  for _fd in "${_tmpA}" "${_tmpB}" ; do
-    rm -fr "$_fd"
-  done
+  # for _fd in "${_tmpA}" "${_tmpB}" ; do
+  #   rm -fr "$_fd"
+  # done
 
   return "$_STATE"
 
