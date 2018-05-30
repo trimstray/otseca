@@ -397,7 +397,7 @@ function __main__() {
   _default_report="${_temp}/report"
   _report="${_out}/report"
 
-  cp -R "${_default_report}" "${_report}"
+  rsync -a --delete "${_default_report}/" "${_report}" 2>&1
 
   # shellcheck disable=SC2034,SC2154
   _output_report="${_report}/index.html"
@@ -415,6 +415,8 @@ function __main__() {
 
   # shellcheck disable=SC2154,SC2164
   cd "${_dump_dir}"
+
+  _sprintf "info" "Please wait..."
 
   for i in $(find . -type f | sort -n -k 2) ; do
 
