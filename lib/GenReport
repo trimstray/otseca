@@ -21,13 +21,43 @@ function GenReport() {
   local _FUNCTION_ID="GenReport"
   local _STATE=0
 
-  _msg_args+=(\
-  "added pre code" \
-  "added post code")
+  # shellcheck disable=SC2034,SC2154
+  _output_data="${_report}/body.html"
 
-  _cmd_args+=(\
-  "eval sed -i \"s/###START###/<pre><code>/g\" ${_dump_log}" \
-  "eval sed -i \"s/###STOP###/<pre><code>/g\" ${_dump_log}")
+  # shellcheck disable=SC2154
+  printf "%s\\n" \
+"
+<div class=\"limiter\">
+<div class=\"container-table100\">
+<div class=\"wrap-table100\">
+<div class=\"table100 ver1 m-b-110\">
+
+<div class=\"table100-head\">
+<table>
+<thead>
+<tr class=\"row100 head\">
+<th class=\"cell100 column1\">COMMAND: ${_command}</th>
+</tr>
+</thead>
+</table>
+</div>
+<div class=\"table100-body js-pscroll\">
+<table>
+<tbody>
+<tr class=\"row100 body\">
+<td class=\"cell100 column1\">
+<pre><code>${_output}</pre></code>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+" \
+  >> "${_output_data}"
 
   _STATE="$?"
 
