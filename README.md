@@ -1,6 +1,9 @@
-<h1 align="center">Otseca</h1>
+<p align="center">
+    <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_logo.png"
+        alt="Master">
+</p>
 
-<h4 align="center">Search and dump system configuration.</h4>
+<h4 align="center">Open source security audit tool to search and dump system configuration</h4>
 
 <p align="center">
   <a href="https://img.shields.io/badge/Branch-master-green.svg">
@@ -24,6 +27,7 @@
    <a href="#description">Description</a>
  • <a href="#how-to-use">How To Use</a>
  • <a href="#requirements">Requirements</a>
+ • <a href="#reports">Reports</a>
  • <a href="#other">Other</a>
  • <a href="#license">License</a>
  • <a href="https://github.com/trimstray/otseca/wiki">Wiki</a>
@@ -41,7 +45,7 @@
 
 ## Description
 
-**<u>Otseca</u>** is a open source tool to search and dump system configuration.
+**<u>Otseca</u>** is a open source security audit tool to search and dump system configuration.
 
 For more information, see See **<a href="https://github.com/trimstray/otseca/wiki">wiki</a>**.
 
@@ -68,12 +72,26 @@ otseca
 
 ## Requirements
 
+**Otseca** generates reports in html format.
+
+<p align="center">
+    <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_lsmod_output.png"
+        alt="Master">
+</p>
+
+<p align="center">
+    <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_sysctl_output.png"
+        alt="Master">
+</p>
+
 This tool working with:
 
 - **GNU/Linux** or **BSD** (testing on Debian, CentOS and FreeBSD)
 - **Bash** (testing on 4.4.19)
 
 Also you will need **root access**.
+
+## Reports
 
 ## Other
 
