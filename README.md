@@ -72,6 +72,15 @@ otseca
 
 ## Requirements
 
+This tool working with:
+
+- **GNU/Linux** or **BSD** (testing on Debian, CentOS and FreeBSD)
+- **Bash** (testing on 4.4.19)
+
+Also you will need **root access**.
+
+## Reports
+
 **Otseca** generates reports in html format.
 
 <p align="center">
@@ -83,15 +92,6 @@ otseca
     <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_sysctl_output.png"
         alt="Master">
 </p>
-
-This tool working with:
-
-- **GNU/Linux** or **BSD** (testing on Debian, CentOS and FreeBSD)
-- **Bash** (testing on 4.4.19)
-
-Also you will need **root access**.
-
-## Reports
 
 ## Other
 
