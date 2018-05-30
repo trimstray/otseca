@@ -3,7 +3,7 @@
         alt="Master">
 </p>
 
-<h4 align="center">Open source security audit tool to search and dump system configuration</h4>
+<h4 align="center">Open source security auditing tool to search and dump system configuration. Generates html format reports.</h4>
 
 <p align="center">
   <a href="https://img.shields.io/badge/Branch-master-green.svg">
@@ -45,7 +45,7 @@
 
 ## Description
 
-**<u>Otseca</u>** is a open source security audit tool to search and dump system configuration.
+**<u>Otseca</u>** is a open source security auditing tool to search and dump system configuration. Generates html format reports.
 
 For more information, see **<a href="https://github.com/trimstray/otseca/wiki">wiki</a>**.
 
