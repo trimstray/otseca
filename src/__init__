@@ -391,7 +391,7 @@ function __main__() {
 
   _sprintf "head" "Generate report"
 
-  _fdate=$(date "+%d.%m.%Y %H:%M")
+  _fdate=$(date "+%d.%m.%Y %H:%M:%S")
 
   # shellcheck disable=SC2154
   _default_report="${_temp}/report"
