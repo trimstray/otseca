@@ -423,7 +423,7 @@ function _init_cmd() {
 
     _logger "pass" \
       "${_FUNCTION_ID}()" \
-      "result: ok"
+      "result: pass"
 
   else
 
