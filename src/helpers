@@ -606,7 +606,6 @@ function _help_() {
 
   Options:
         --help                      show this message
-        --verbose                   displays 'info' messages on the screen (verbose mode)
         --ignore-failed             do not exit with nonzero on commands failed
 
 
