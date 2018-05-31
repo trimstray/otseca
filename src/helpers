@@ -603,6 +603,7 @@ function _help_() {
 
   Examples:
     $_init_name --help
+    $_init_name --format html
 
   Options:
         --help                      show this message
