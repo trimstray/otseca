@@ -606,6 +606,7 @@ function _help_() {
 
   Options:
         --help                      show this message
+        --format                    set output format (html/raw-html)
         --ignore-failed             do not exit with nonzero on commands failed
 
 
