@@ -254,6 +254,8 @@ function __main__() {
   clear
 
   _t_rst="1"
+  _c_rst="6"
+
   _t_sst="60"
 
   _t_bar="2;39"
@@ -261,21 +263,21 @@ function __main__() {
   # ----------------------------------------------------------------------------
 
   _t_rst=$((_t_rst + 1))
-  tput cup "$_t_rst" 0 ;
+  tput cup "$_t_rst" "$_c_rst"
 
   printf "\\e[${_t_bar}m%s\\e[m" \
-         "+-----------------------------------------------------------+"
+         "┌───────────────────────────────────────────────────────────┐"
 
   # ----------------------------------------------------------------------------
 
   _t_rst=$((_t_rst + 1))
-  tput cup "$_t_rst" 0 ; printf "\\e[${_t_bar}m%s\\e[m" ":"
-  tput cup "$_t_rst" "$_t_sst" ; printf "\\e[${_t_bar}m%s\\e[m" ":"
+  tput cup "$_t_rst" "$_c_rst" ; printf "\\e[${_t_bar}m%s\\e[m" "│"
+  tput cup "$_t_rst" $((_t_sst + _c_rst)) ; printf "\\e[${_t_bar}m%s\\e[m" "│"
 
   # ----------------------------------------------------------------------------
 
   _t_rst=$((_t_rst + 1))
-  tput cup "$_t_rst" 0 ; printf "\\e[${_t_bar}m%s\\e[m" ":"
+  tput cup "$_t_rst" "$_c_rst" ; printf "\\e[${_t_bar}m%s\\e[m" "│"
 
   printf "%s\\e[1;31m%s\\e[m \\e[2;32m%s\\e[m \\e[1;37m%s\\e[m \\e[1;41m%s\\e[m" \
          "         " \
@@ -284,61 +286,61 @@ function __main__() {
          "$_version" \
          "security audit script"
 
-  tput cup "$_t_rst" "$_t_sst" ; printf "\\e[${_t_bar}m%s\\e[m" ":"
+  tput cup "$_t_rst" $((_t_sst + _c_rst)) ; printf "\\e[${_t_bar}m%s\\e[m" "│"
 
   # ----------------------------------------------------------------------------
 
   _t_rst=$((_t_rst + 1))
-  tput cup "$_t_rst" 0 ; printf "\\e[${_t_bar}m%s\\e[m" ":"
-  tput cup "$_t_rst" "$_t_sst" ; printf "\\e[${_t_bar}m%s\\e[m" ":"
+  tput cup "$_t_rst" "$_c_rst"; printf "\\e[${_t_bar}m%s\\e[m" "│"
+  tput cup "$_t_rst" $((_t_sst + _c_rst)) ; printf "\\e[${_t_bar}m%s\\e[m" "│"
 
   # ----------------------------------------------------------------------------
 
   _t_rst=$((_t_rst + 1))
-  tput cup "$_t_rst" 0 ; printf "\\e[${_t_bar}m%s\\e[m" ":"
+  tput cup "$_t_rst" "$_c_rst" ; printf "\\e[${_t_bar}m%s\\e[m" "│"
 
   printf "%s\\e[1;37m%s\\e[m \\e[2;37m%s\\e[m" \
          "       " \
          "Project:"  \
          "https://github.com/trimstray/otseca"
 
-  tput cup "$_t_rst" "$_t_sst" ; printf "\\e[${_t_bar}m%s\\e[m" ":"
+  tput cup "$_t_rst" $((_t_sst + _c_rst)) ; printf "\\e[${_t_bar}m%s\\e[m" "│"
 
   # ----------------------------------------------------------------------------
 
   _t_rst=$((_t_rst + 1))
-  tput cup "$_t_rst" 0 ; printf "\\e[${_t_bar}m%s\\e[m" ":"
-  tput cup "$_t_rst" "$_t_sst" ; printf "\\e[${_t_bar}m%s\\e[m" ":"
+  tput cup "$_t_rst" "$_c_rst" ; printf "\\e[${_t_bar}m%s\\e[m" "│"
+  tput cup "$_t_rst" $((_t_sst + _c_rst)) ; printf "\\e[${_t_bar}m%s\\e[m" "│"
 
   # ----------------------------------------------------------------------------
 
   _t_rst=$((_t_rst + 1))
-  tput cup "$_t_rst" 0 ; printf "\\e[${_t_bar}m%s\\e[m" ":"
+  tput cup "$_t_rst" "$_c_rst" ; printf "\\e[${_t_bar}m%s\\e[m" "│"
 
   printf "%s\\e[0;36m%s\\e[m" \
          "              " \
          "Debian GNU/Linux, CentOS Linux"
 
-  tput cup "$_t_rst" "$_t_sst" ; printf "\\e[${_t_bar}m%s\\e[m" ":"
+  tput cup "$_t_rst" $((_t_sst + _c_rst)) ; printf "\\e[${_t_bar}m%s\\e[m" "│"
 
   # ----------------------------------------------------------------------------
 
   _t_rst=$((_t_rst + 1))
-  tput cup "$_t_rst" 0 ; printf "\\e[${_t_bar}m%s\\e[m" ":"
-  tput cup "$_t_rst" "$_t_sst" ; printf "\\e[${_t_bar}m%s\\e[m" ":"
+  tput cup "$_t_rst" "$_c_rst" ; printf "\\e[${_t_bar}m%s\\e[m" "│"
+  tput cup "$_t_rst" $((_t_sst + _c_rst)) ; printf "\\e[${_t_bar}m%s\\e[m" "│"
 
   # ----------------------------------------------------------------------------
 
   _t_rst=$((_t_rst + 1))
-  tput cup "$_t_rst" 0 ;
+  tput cup "$_t_rst" "$_c_rst" ;
 
   printf "\\e[${_t_bar}m%s\\e[m" \
-         "+-----------------------------------------------------------+"
+         "└───────────────────────────────────────────────────────────┘"
 
   # ----------------------------------------------------------------------------
 
-  _t_rst=$((_t_rst + 3))
-  tput cup "$_t_rst" 0
+  _t_rst=$((_t_rst + 2))
+  tput cup "$_t_rst" "$_c_rst"
 
   # ----------------------------------------------------------------------------
 
@@ -356,7 +358,7 @@ function __main__() {
   # shellcheck disable=SC2154
   if [[ ! -d "$_out" ]] ; then
 
-    _sprintf "info" "create output directory"
+    printf "     \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m\\n" "•" "set output directory"
 
     mkdir -p "$_out"
 
@@ -366,7 +368,7 @@ function __main__() {
 
   fi
 
-  _sprintf "info" "create dump directory"
+  printf "     \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m\\n" "•" "set dump directory"
 
   mkdir -p "${_dump_dir}"
 
@@ -374,7 +376,7 @@ function __main__() {
     "${_FUNCTION_ID}()" \
     "create dump directory: ${_dump_dir}"
 
-  _sprintf "info" "set log file"
+  printf "     \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m\\n" "•" "set log file"
 
   # ----------------------------------------------------------------------------
 
@@ -388,6 +390,8 @@ function __main__() {
 
     # shellcheck disable=SC2034
     _tdate=$(date +%s)
+
+    printf "   \\e[1;0;32m%s\\e[m \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m" " " "•" "${_res}"
 
     _init_function "DumpSysInfo \"${_res}\""
 
@@ -432,7 +436,7 @@ function __main__() {
   # shellcheck disable=SC2154,SC2164
   cd "${_dump_dir}"
 
-  _sprintf "info" "Please wait..."
+  printf "     \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m\\n" "•" "create output report"
 
   for i in $(find . -type f | sort -n -k 2) ; do
 
