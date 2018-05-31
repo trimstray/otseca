@@ -385,7 +385,7 @@ function __main__() {
     # shellcheck disable=SC2034
     _tdate=$(date +%s)
 
-    printf "   \\e[1;0;32m%s\\e[m \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m" " " "•" "${_res}"
+    printf "   \\e[1;0;36m%s\\e[m \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m" " " "•" "${_res}"
 
     _init_function "DumpSysInfo \"${_res}\""
 
