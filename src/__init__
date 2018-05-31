@@ -459,6 +459,12 @@ function __main__() {
 
   done
 
+  if [[ -d "${_dump_dir}" ]] ; then
+
+    rm -fr "${_dump_dir}"
+
+  fi
+
   # shellcheck disable=SC2154,SC2164
   cd "${_wdir}"
 
