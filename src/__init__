@@ -247,10 +247,10 @@ function __main__() {
 
   clear
 
-  _t_rst="1"
+  _t_rst="0"
   _c_rst="6"
 
-  _t_sst="60"
+  _t_sst="61"
 
   _t_bar="2;39"
 
@@ -260,7 +260,7 @@ function __main__() {
   tput cup "$_t_rst" "$_c_rst"
 
   printf "\\e[${_t_bar}m%s\\e[m" \
-         "┌───────────────────────────────────────────────────────────┐"
+         "┌────────────────────────────────────────────────────────────┐"
 
   # ----------------------------------------------------------------------------
 
@@ -274,7 +274,7 @@ function __main__() {
   tput cup "$_t_rst" "$_c_rst" ; printf "\\e[${_t_bar}m%s\\e[m" "│"
 
   printf "%s\\e[1;31m%s\\e[m \\e[2;32m%s\\e[m \\e[1;37m%s\\e[m \\e[1;41m%s\\e[m" \
-         "         " \
+         "           " \
          "Φ"  \
          "otseca" \
          "$_version" \
@@ -294,7 +294,7 @@ function __main__() {
   tput cup "$_t_rst" "$_c_rst" ; printf "\\e[${_t_bar}m%s\\e[m" "│"
 
   printf "%s\\e[1;37m%s\\e[m \\e[2;37m%s\\e[m" \
-         "       " \
+         "        " \
          "Project:"  \
          "https://github.com/trimstray/otseca"
 
@@ -312,7 +312,7 @@ function __main__() {
   tput cup "$_t_rst" "$_c_rst" ; printf "\\e[${_t_bar}m%s\\e[m" "│"
 
   printf "%s\\e[0;36m%s\\e[m" \
-         "              " \
+         "               " \
          "Debian GNU/Linux, CentOS Linux"
 
   tput cup "$_t_rst" $((_t_sst + _c_rst)) ; printf "\\e[${_t_bar}m%s\\e[m" "│"
@@ -329,7 +329,7 @@ function __main__() {
   tput cup "$_t_rst" "$_c_rst" ;
 
   printf "\\e[${_t_bar}m%s\\e[m" \
-         "└───────────────────────────────────────────────────────────┘"
+         "└────────────────────────────────────────────────────────────┘"
 
   # ----------------------------------------------------------------------------
 
