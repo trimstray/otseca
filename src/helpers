@@ -283,11 +283,13 @@ function _sprintf() {
 
           c_trgb="1;2;37"
 
-          printf '   \e['${s_trgb}'m%s\e[m \e['${c_trgb}'m%s\e[m\n' "$s_char" "$_s_info"
+          printf '    \e['${s_trgb}'m%s\e[m \e['${c_trgb}'m%s\e[m\n' \
+                 "$s_char" "$_s_info"
 
         else
 
-          printf '   \e['${s_trgb}'m%s\e[m \e['${c_trgb}'m%s\e[m\n' "$s_char" "$_s_info"
+          printf '    \e['${s_trgb}'m%s\e[m \e['${c_trgb}'m%s\e[m\n' \
+                 "$s_char" "$_s_info"
 
         fi
 
