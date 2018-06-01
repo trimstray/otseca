@@ -421,7 +421,10 @@ function __main__() {
         if [[ "$_tasks_system" -eq 1 ]] ; then
 
           printf "     \\e[0;1;36m%s\\e[m task: \\e[1;1;33m%s\\e[m\\n" \
-                 "×" "system"
+                 "×" "SYSTEM"
+
+          printf "     %s\\n" \
+                 "¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨"
 
           _TASKS=("${SYSTEM_STACK[@]}")
 
@@ -442,7 +445,10 @@ function __main__() {
         if [[ "$_tasks_fs" -eq 1 ]] ; then
 
           printf "     \\e[0;1;36m%s\\e[m task: \\e[1;1;33m%s\\e[m\\n" \
-                 "×" "filesystem"
+                 "×" "FILESYSTEM"
+
+          printf "     %s\\n" \
+                 "¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨"
 
           _TASKS=("${FS_STACK[@]}")
 
@@ -463,7 +469,10 @@ function __main__() {
         if [[ "$_tasks_permissions" -eq 1 ]] ; then
 
           printf "     \\e[0;1;36m%s\\e[m task: \\e[1;1;33m%s\\e[m\\n" \
-                 "×" "permissions"
+                 "×" "PERMISSIONS"
+
+          printf "     %s\\n" \
+                 "¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨"
 
           _TASKS=("${PERMISSIONS_STACK[@]}")
 
@@ -484,7 +493,10 @@ function __main__() {
         if [[ "$_tasks_services" -eq 1 ]] ; then
 
           printf "     \\e[0;1;36m%s\\e[m task: \\e[1;1;33m%s\\e[m\\n" \
-                 "×" "services"
+                 "×" "SERVICES"
+
+          printf "     %s\\n" \
+                 "¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨"
 
           _TASKS=("${SERVICES_STACK[@]}")
 
@@ -505,7 +517,10 @@ function __main__() {
         if [[ "$_tasks_network" -eq 1 ]] ; then
 
           printf "     \\e[0;1;36m%s\\e[m task: \\e[1;1;33m%s\\e[m\\n" \
-                 "×" "network"
+                 "×" "NETWORK"
+
+          printf "     %s\\n" \
+                 "¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨"
 
           _TASKS=("${NETWORK_STACK[@]}")
 
@@ -526,7 +541,10 @@ function __main__() {
         if [[ "$_tasks_other" -eq 1 ]] ; then
 
           printf "     \\e[0;1;36m%s\\e[m task: \\e[1;1;33m%s\\e[m\\n" \
-                 "×" "other"
+                 "×" "OTHER"
+
+          printf "     %s\\n" \
+                 "¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨"
 
           _TASKS=("${OTHER_STACK[@]}")
 
