@@ -391,7 +391,10 @@ function __main__() {
 
   _tcount=0
 
-  for _res in "${BASE_STACK[@]}" "${NETWORK_STACK[@]}" ; do
+  _TASKS=("${SYSTEM_STACK[@]}" "${FS_STACK[@]}" "${PERMISSIONS_STACK[@]}" \
+          "${SERVICES_STACK[@]}" "${NETWORK_STACK[@]}" "${OTHER_STACK[@]}")
+
+  for _res in "${_TASKS[@]}" ; do
 
     # shellcheck disable=SC2034
     _tdate=$(date +%s)
