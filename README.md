@@ -43,6 +43,11 @@
 
 <br>
 
+<p align="center">
+    <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_output.png"
+        alt="Master">
+</p>
+
 ## Description
 
 **<u>Otseca</u>** is a open source security auditing tool to search and dump system configuration. It allows you to generate reports in **HTML** or **RAW-HTML** formats.
