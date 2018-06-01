@@ -406,12 +406,14 @@ function __main__() {
   _tasks_network=1
   _tasks_other=1
 
+  _fixed_tasks_num=6
+
   if [[ ! -z "$tasks_type" ]] ; then
 
     _tasks_num="${#_ALL_TASKS[@]}"
     _xcount=1
 
-    while [[ "$_xcount" -le "$_tasks_num" ]] ; do
+    while [[ "$_xcount" -le "$_fixed_tasks_num" ]] ; do
 
       # shellcheck disable=SC2034
       _tdate=$(date +%s)
@@ -581,8 +583,6 @@ function __main__() {
   fi
 
   # ----------------------------------------------------------------------------
-
-  echo
 
   _sprintf "head" "Generate html report"
 
