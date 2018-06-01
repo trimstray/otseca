@@ -90,6 +90,26 @@ Also you will need **root access**.
 
 > Default path for reports is `{project}/data/output` directory.
 
+### Main page (index.html)
+
+It's the main file which contains a list of reports such as system or network.
+
+<p align="center">
+    <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_index_output.png"
+        alt="Master">
+</p>
+
+### Specific reports
+
+The report that can be performed consists of the following sections (stacks):
+
+- **system** - dump info from system commands, eg. `sysctl -a`, (output file: system.all.log.html)
+- **filesystem** - dump info about files and directories layer, eg. `cat /etc/hosts.allow`, (output file: filesystem.all.log.html)
+- **permissions**  - dump info about permissions, eg. `find / -nouser -o -nogroup -print`, (output file: permissions.all.log.html)
+- **services** - dump info about system services, eg. `ntpq -p`, (output file: services.all.log.html)
+- **network** - dump info from network layer, eg. `netstat -tunap`, (output file: network.all.log.html)
+- **other** - all other, also user tasks, eg. `yum list installed`, (output file: other.all.log.html)
+
 HTML reports consist of the following blocks:
 
 <p align="center">
