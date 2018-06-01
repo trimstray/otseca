@@ -202,7 +202,7 @@ function __main__() {
   # and all the other code blocks.
 
   # In this section we add external file (for -c|--config script param).
-  if [[ "$load_state" -eq 1 ]] ; then _load "head" "$config" ; fi
+  # if [[ "$load_state" -eq 1 ]] ; then _load "head" "$config" ; fi
 
   # shellcheck disable=SC2034
   # Generate random value.
@@ -356,6 +356,15 @@ function __main__() {
   echo
 
   _sprintf "head" "Init environment"
+
+  if [[ "$load_state" -eq 1 ]] ; then
+
+    printf "     \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m\\n" \
+           "•" "load otseca.conf"
+
+    _load "null" "$config"
+
+  fi
 
   # shellcheck disable=SC2154
   if [[ ! -d "$_out" ]] ; then
