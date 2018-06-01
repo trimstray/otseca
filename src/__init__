@@ -644,6 +644,9 @@ function __main__() {
     cat "${_output_prefix}" "${_fd_path}" "${_output_postfix}" \
     >> "${_fd_path}.html"
 
+    sed -i "s/__VERSION__/${_version}/g" "${_fd_path}.html"
+    sed -i "s/__DATE__/${_fdate}/g" "${_fd_path}.html"
+
     if [[ -f "${_fd_path}" ]] ; then
 
       rm -fr "${_fd_path:?}"
@@ -652,8 +655,8 @@ function __main__() {
 
   done
 
-  sed -i "s/__VERSION__/${_version}/g" "${_output_report}/${_i}.html"
-  sed -i "s/__DATE__/${_fdate}/g" "${_output_report}/${_i}.html"
+  sed -i "s/__VERSION__/${_version}/g" "index.html"
+  sed -i "s/__DATE__/${_fdate}/g" "index.html"
 
   if [[ -d "${_dump_dir}" ]] ; then
 
