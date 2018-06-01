@@ -403,9 +403,9 @@ function _init_cmd() {
   # shellcheck disable=SC2154
   printf "__COMMAND__:%s\\n" \
          "$_msg" \
-         >>"$_log_stdout" >>"${_dump_log}.${_tdate}-${_tcount}" 2>&1
+         >>"$_log_stdout" >>"${_dump_log}" 2>&1
 
-  $_cmd >>"$_log_stdout" >>"${_dump_log}.${_tdate}-${_tcount}" 2>&1 &
+  $_cmd >>"$_log_stdout" >>"${_dump_log}" 2>&1 &
 
   # We keep pid of the last command.
   _pid="$!"
