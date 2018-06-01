@@ -31,7 +31,7 @@ function SetReportType() {
     # shellcheck disable=SC2034,SC2154
     _dump_log="${_dlog}-${_tcount}"
 
-    printf "   \\e[1;0;36m%s\\e[m \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m" \
+    printf "    \\e[1;0;36m%s\\e[m \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m" \
            " " "•" "${_res}"
 
     _init_function "DumpSysInfo \"${_res}\""
@@ -39,6 +39,8 @@ function SetReportType() {
     _tcount=$((_tcount + 1))
 
   done
+
+  echo
 
   _STATE="$?"
 
