@@ -607,7 +607,9 @@ function _help_() {
 
   Options:
         --help                      show this message
-        --format                    set output format (html/raw-html)
+     -f|--format <key>              set output format (key: html/raw-html)
+     -t|--tasks <key>               set specific task to do
+                                    (key: system, fs, permissions, services, network, other)
         --ignore-failed             do not exit with nonzero on commands failed
 
 
