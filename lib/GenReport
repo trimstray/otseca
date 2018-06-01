@@ -21,8 +21,11 @@ function GenReport() {
   local _FUNCTION_ID="GenReport"
   local _STATE=0
 
+  # shellcheck disable=SC2034
+  _fd_postfix="$1"
+
   # shellcheck disable=SC2034,SC2154
-  _output_data="${_report}/body.html"
+  _output_data="${_report}/includes/${_fd_postfix}"
 
   # shellcheck disable=SC2154
   printf "%s\\n" \
@@ -58,6 +61,8 @@ function GenReport() {
 </div>
 " \
   >> "${_output_data}"
+
+  _output_data="${_report}/includes"
 
   _STATE="$?"
 
