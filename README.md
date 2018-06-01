@@ -10,8 +10,8 @@
     <img src="https://img.shields.io/badge/Branch-master-green.svg"
         alt="Branch">
   </a>
-  <a href="https://img.shields.io/badge/Version-v1.0.1-lightgrey.svg">
-    <img src="https://img.shields.io/badge/Version-v1.0.1-lightgrey.svg"
+  <a href="https://img.shields.io/badge/Version-v1.0.2-lightgrey.svg">
+    <img src="https://img.shields.io/badge/Version-v1.0.2-lightgrey.svg"
         alt="Version">
   </a>
   <a href="https://travis-ci.org/trimstray/otseca">
