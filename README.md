@@ -10,8 +10,8 @@
     <img src="https://img.shields.io/badge/Branch-master-green.svg"
         alt="Branch">
   </a>
-  <a href="https://img.shields.io/badge/Version-v1.0.0-lightgrey.svg">
-    <img src="https://img.shields.io/badge/Version-v1.0.0-lightgrey.svg"
+  <a href="https://img.shields.io/badge/Version-v1.0.1-lightgrey.svg">
+    <img src="https://img.shields.io/badge/Version-v1.0.1-lightgrey.svg"
         alt="Version">
   </a>
   <a href="https://travis-ci.org/trimstray/otseca">
@@ -45,7 +45,7 @@
 
 ## Description
 
-**<u>Otseca</u>** is a open source security auditing tool to search and dump system configuration. Generates html format reports.
+**<u>Otseca</u>** is a open source security auditing tool to search and dump system configuration. It allows you to generate reports in **HTML** or **RAW-HTML** formats.
 
 For more information, see **<a href="https://github.com/trimstray/otseca/wiki">wiki</a>**.
 
@@ -81,11 +81,11 @@ Also you will need **root access**.
 
 ## Reports
 
-**Otseca** generates reports in html format. An example of the report can be found **<a href="https://github.com/trimstray/otseca/tree/master/doc/preview">here</a>**.
+**Otseca** generates reports in html (js, css and other) or raw-html (pure html) format. An example of the html report can be found **<a href="https://github.com/trimstray/otseca/tree/master/doc/preview">here</a>**.
 
-> Default path for reports is `{otseca_dir}/data/output/report` directory.
+> Default path for reports is `{project}/data/output` directory.
 
-Reports consist of the following blocks:
+HTML reports consist of the following blocks:
 
 <p align="center">
     <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_lsmod_output.png"
