@@ -99,7 +99,7 @@ It's the main file which contains a list of reports such as system or network.
         alt="Master">
 </p>
 
-### Specific reports
+### Tasks reports
 
 The report that can be performed consists of the following sections (stacks):
 
