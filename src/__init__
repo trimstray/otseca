@@ -24,7 +24,7 @@ function __main__() {
   readonly _log_path="${_log_directory}/${_log_file}"
 
   # Set script version.
-  local _version="v1.0.0"
+  local _version="v1.0.1"
 
   # We check if we are a root user.
   if [[ "$EUID" -ne 0 ]] ; then
