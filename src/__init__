@@ -420,6 +420,9 @@ function __main__() {
 
         if [[ "$_tasks_system" -eq 1 ]] ; then
 
+          printf "     \\e[0;1;36m%s\\e[m task: \\e[1;1;33m%s\\e[m\\n" \
+                 "×" "system"
+
           _TASKS=("${SYSTEM_STACK[@]}")
 
           # shellcheck disable=SC2034
@@ -437,6 +440,9 @@ function __main__() {
       if [[ "$tasks_type" = *"fs"* ]] ; then
 
         if [[ "$_tasks_fs" -eq 1 ]] ; then
+
+          printf "     \\e[0;1;36m%s\\e[m task: \\e[1;1;33m%s\\e[m\\n" \
+                 "×" "filesystem"
 
           _TASKS=("${FS_STACK[@]}")
 
@@ -456,6 +462,9 @@ function __main__() {
 
         if [[ "$_tasks_permissions" -eq 1 ]] ; then
 
+          printf "     \\e[0;1;36m%s\\e[m task: \\e[1;1;33m%s\\e[m\\n" \
+                 "×" "permissions"
+
           _TASKS=("${PERMISSIONS_STACK[@]}")
 
           # shellcheck disable=SC2034
@@ -473,6 +482,9 @@ function __main__() {
       if [[ "$tasks_type" = *"services"* ]] ; then
 
         if [[ "$_tasks_services" -eq 1 ]] ; then
+
+          printf "     \\e[0;1;36m%s\\e[m task: \\e[1;1;33m%s\\e[m\\n" \
+                 "×" "services"
 
           _TASKS=("${SERVICES_STACK[@]}")
 
@@ -492,6 +504,9 @@ function __main__() {
 
         if [[ "$_tasks_network" -eq 1 ]] ; then
 
+          printf "     \\e[0;1;36m%s\\e[m task: \\e[1;1;33m%s\\e[m\\n" \
+                 "×" "network"
+
           _TASKS=("${NETWORK_STACK[@]}")
 
           # shellcheck disable=SC2034
@@ -509,6 +524,9 @@ function __main__() {
       if [[ "$tasks_type" = *"other"* ]] ; then
 
         if [[ "$_tasks_other" -eq 1 ]] ; then
+
+          printf "     \\e[0;1;36m%s\\e[m task: \\e[1;1;33m%s\\e[m\\n" \
+                 "×" "other"
 
           _TASKS=("${OTHER_STACK[@]}")
 
@@ -607,7 +625,7 @@ function __main__() {
   cd "${_dump_dir}"
 
   printf "     \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m\\n" \
-         "•" "create output report"
+         "•" "create output log"
 
   for i in $(find . -type f | sort -n -k 2) ; do
 
@@ -635,6 +653,9 @@ function __main__() {
   # shellcheck disable=SC2154,SC2164
   cd "${_output_report}"
 
+  printf "     \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m\\n" \
+         "•" "create output report"
+
   for i in $(find . -type f | sort -n -k 2 | grep ".all.log") ; do
 
     _i=$(echo "${i}" | sed 's/.\///g')
@@ -657,6 +678,9 @@ function __main__() {
 
   sed -i "s/__VERSION__/${_version}/g" "index.html"
   sed -i "s/__DATE__/${_fdate}/g" "index.html"
+
+  printf "     \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m\\n" \
+         "•" "delete temporary files"
 
   if [[ -d "${_dump_dir}" ]] ; then
 
