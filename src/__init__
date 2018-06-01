@@ -395,68 +395,154 @@ function __main__() {
 
   _sprintf "head" "Dump system information"
 
-  _tcount=0
-
   _TASKS=()
+  _ALL_TASKS=("${SYSTEM_STACK[@]}" "${FS_STACK[@]}" "${PERMISSIONS_STACK[@]}" \
+              "${SERVICES_STACK[@]}" "${NETWORK_STACK[@]}" "${OTHER_STACK[@]}")
+
+  _tasks_system=1
+  _tasks_fs=1
+  _tasks_permissions=1
+  _tasks_services=1
+  _tasks_network=1
+  _tasks_other=1
 
   if [[ ! -z "$tasks_type" ]] ; then
 
-    if [[ "$tasks_type" = *"system"* ]] ; then
+    _tasks_num="${#_ALL_TASKS[@]}"
+    _xcount=1
 
-      _TASKS+=("${SYSTEM_STACK[@]}")
+    while [[ "$_xcount" -le "$_tasks_num" ]] ; do
 
-    fi
+      # shellcheck disable=SC2034
+      _tdate=$(date +%s)
 
-    if [[ "$tasks_type" = *"fs"* ]] ; then
+      if [[ "$tasks_type" = *"system"* ]] ; then
 
-      _TASKS+=("${FS_STACK[@]}")
+        if [[ "$_tasks_system" -eq 1 ]] ; then
 
-    fi
+          _TASKS=("${SYSTEM_STACK[@]}")
 
-    if [[ "$tasks_type" = *"permissions"* ]] ; then
+          # shellcheck disable=SC2034
+          _dump_log_system="${_dump_dir}/dump.log.${_tdate}-system"
 
-      _TASKS+=("${PERMISSIONS_STACK[@]}")
+          SetReportType "${_dump_log_system}"
 
-    fi
+        fi
 
-    if [[ "$tasks_type" = *"services"* ]] ; then
+        # shellcheck disable=SC2034
+        _tasks_system=0
 
-      _TASKS+=("${SERVICES_STACK[@]}")
+      fi
 
-    fi
+      if [[ "$tasks_type" = *"fs"* ]] ; then
 
-    if [[ "$tasks_type" = *"network"* ]] ; then
+        if [[ "$_tasks_fs" -eq 1 ]] ; then
 
-      _TASKS+=("${NETWORK_STACK[@]}")
+          _TASKS=("${FS_STACK[@]}")
 
-    fi
+          # shellcheck disable=SC2034
+          _dump_log_fs="${_dump_dir}/dump.log.${_tdate}-fs"
 
-    if [[ "$tasks_type" = *"other"* ]] ; then
+          SetReportType "${_dump_log_fs}"
 
-      _TASKS+=("${OTHER_STACK[@]}")
+        fi
 
-    fi
+        # shellcheck disable=SC2034
+        _tasks_fs=0
+
+      fi
+
+      if [[ "$tasks_type" = *"permissions"* ]] ; then
+
+        if [[ "$_tasks_permissions" -eq 1 ]] ; then
+
+          _TASKS=("${PERMISSIONS_STACK[@]}")
+
+          # shellcheck disable=SC2034
+          _dump_log_permissions="${_dump_dir}/dump.log.${_tdate}-permissions"
+
+          SetReportType "${_dump_log_permissions}"
+
+        fi
+
+        # shellcheck disable=SC2034
+        _tasks_permissions=0
+
+      fi
+
+      if [[ "$tasks_type" = *"services"* ]] ; then
+
+        if [[ "$_tasks_services" -eq 1 ]] ; then
+
+          _TASKS=("${SERVICES_STACK[@]}")
+
+          # shellcheck disable=SC2034
+          _dump_log_services="${_dump_dir}/dump.log.${_tdate}-services"
+
+          SetReportType "${_dump_log_services}"
+
+        fi
+
+        # shellcheck disable=SC2034
+        _tasks_services=0
+
+      fi
+
+      if [[ "$tasks_type" = *"network"* ]] ; then
+
+        if [[ "$_tasks_network" -eq 1 ]] ; then
+
+          _TASKS=("${NETWORK_STACK[@]}")
+
+          # shellcheck disable=SC2034
+          _dump_log_network="${_dump_dir}/dump.log.${_tdate}-network"
+
+          SetReportType "${_dump_log_network}"
+
+        fi
+
+        # shellcheck disable=SC2034
+        _tasks_network=0
+
+      fi
+
+      if [[ "$tasks_type" = *"other"* ]] ; then
+
+        if [[ "$_tasks_other" -eq 1 ]] ; then
+
+          _TASKS=("${OTHER_STACK[@]}")
+
+          # shellcheck disable=SC2034
+          _dump_log_other="${_dump_dir}/dump.log.${_tdate}-other"
+
+          SetReportType "${_dump_log_other}"
+
+        fi
+
+        # shellcheck disable=SC2034
+        _tasks_other=0
+
+      fi
+
+      _xcount=$((_xcount + 1))
+
+    done
 
   else
 
+    # shellcheck disable=SC2034
     _TASKS=("${SYSTEM_STACK[@]}" "${FS_STACK[@]}" "${PERMISSIONS_STACK[@]}" \
             "${SERVICES_STACK[@]}" "${NETWORK_STACK[@]}" "${OTHER_STACK[@]}")
 
-  fi
+    # shellcheck disable=SC2034
+    _dump_log_all="${_dump_dir}/dump.log.${_tdate}-all"
 
-  for _res in "${_TASKS[@]}" ; do
+    SetReportType "${_dump_log_all}"
 
     # shellcheck disable=SC2034
-    _tdate=$(date +%s)
+    _tasks_all=1
 
-    printf "   \\e[1;0;36m%s\\e[m \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m" \
-           " " "•" "${_res}"
-
-    _init_function "DumpSysInfo \"${_res}\""
-
-    _tcount=$((_tcount + 1))
-
-  done
+  fi
 
   # ----------------------------------------------------------------------------
 
@@ -507,16 +593,13 @@ function __main__() {
   fi
 
   # shellcheck disable=SC2034,SC2154
-  _output_report="${_report}/index.html"
+  _output_report="${_report}"
   # shellcheck disable=SC2034,SC2154
   _output_prefix="${_report}/prefix.html"
   # shellcheck disable=SC2034,SC2154
   _output_postfix="${_report}/postfix.html"
   # shellcheck disable=SC2034,SC2154
-  _output_data="${_report}/body.html"
-
-  :> "${_output_report}"
-  :> "${_output_data}"
+  _output_data="${_report}"
 
   _wdir=$(pwd)
 
@@ -528,36 +611,75 @@ function __main__() {
 
   for i in $(find . -type f | sort -n -k 2) ; do
 
+    _i=$(echo "${i}" | sed 's/.\///g')
+
     # shellcheck disable=SC2034
     _command=$(grep "__COMMAND__" "$i" | cut -d ":" -f2)
     # shellcheck disable=SC2034
     _output=$(grep -v "__COMMAND__" "$i")
 
-    _init_function "GenReport"
+    :> "${_output_data}/${_i}"
+    :> "${_output_report}/${_i}.html"
+
+    _init_function "GenReport ${_i}"
+
+    _f=$(echo "$_i" | cut -d "-" -f2)
+
+    cat "${_output_data}/${_i}" >> "${_output_report}/${_f}.all.log"
 
   done
 
-  cat "${_output_prefix}" "${_output_data}" "${_output_postfix}" \
-  >> "${_output_report}"
+  # shellcheck disable=SC2154,SC2164
+  cd "${_wdir}"
 
-  sed -i "s/__VERSION__/${_version}/g" "${_output_report}"
-  sed -i "s/__DATE__/${_fdate}/g" "${_output_report}"
+  # shellcheck disable=SC2154,SC2164
+  cd "${_output_report}"
 
-  for i in "${_output_prefix}" "${_output_postfix}" "${_output_data}" ; do
+  for i in $(find . -type f | sort -n -k 2 | grep ".all.log") ; do
 
-    if [[ -e "$i" ]] ; then
+    _i=$(echo "${i}" | sed 's/.\///g')
 
-      rm -fr "${i}"
+    _fd_path="${_output_report}/${_i}"
+
+    cat "${_output_prefix}" "${_fd_path}" "${_output_postfix}" \
+    >> "${_fd_path}.html"
+
+    if [[ -f "${_fd_path}" ]] ; then
+
+      rm -fr "${_fd_path:?}"
 
     fi
 
   done
 
+  sed -i "s/__VERSION__/${_version}/g" "${_output_report}/${_i}.html"
+  sed -i "s/__DATE__/${_fdate}/g" "${_output_report}/${_i}.html"
+
   if [[ -d "${_dump_dir}" ]] ; then
 
-    rm -fr "${_dump_dir}"
+    rm -fr "${_dump_dir:?}"*
 
   fi
+
+  for i in "${_output_prefix}" "${_output_postfix}" ; do
+
+    if [[ -f "$i" ]] ; then
+
+      rm -fr "${i:?}"*
+
+    fi
+
+  done
+
+  for i in $(find . -type f | sort -n -k 2 | grep "dump.log.") ; do
+
+    if [[ -f "$i" ]] ; then
+
+      rm -fr "${i:?}"*
+
+    fi
+
+  done
 
   # shellcheck disable=SC2154,SC2164
   cd "${_wdir}"
