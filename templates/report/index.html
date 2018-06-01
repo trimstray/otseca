@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Φ otseca __VERSION__ security audit script</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--========================================================================-->
+
+<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+
+<!--========================================================================-->
+
+<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+
+<!--========================================================================-->
+
+<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+
+<!--========================================================================-->
+
+<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+
+<!--========================================================================-->
+
+<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+
+<!--========================================================================-->
+
+<link rel="stylesheet" type="text/css" href="css/util.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+
+<!--========================================================================-->
+</head>
+<body>
+
+<!--========================================================================-->
+
+<img src="images/otseca_logo.png">
+
+<h2 class="title">(Ot)her (Sec)urity (A)wareness</h2>
+
+<p class="link">Project: <a href="https://github.com/trimstray/otseca">https://github.com/trimstray/otseca </a></p>
+
+<p class="desc">Open source security auditing tool to search and dump system configuration.<br>It allows you to generate reports in HTML or RAW-HTML formats.</p>
+
+<p class="info">
+Φ otseca __VERSION__ security audit script
+</p>
+
+<p class="date">
+gen_time: __DATE__
+</p>
+
+<!--========================================================================-->
+
+<table class="greyGridTable">
+<thead>
+<tr>
+<th>TYPE</th>
+<th>REPORT FILE</th>
+<th>DESCRIPTION</th>
+</tr>
+</thead>
+<tfoot>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tfoot>
+<tbody>
+<tr>
+<td>System</td>
+<td><a href="system.all.log.html">system.all.log.html</td>
+<td>It contains tasks related directly to the system</td>
+</tr>
+<tr>
+<td>Filesystem</td>
+<td><a href="fs.all.log.html">fs.all.log.html</td>
+<td>It contains tasks related directly to the filesystem (files/directories)</td>
+</tr>
+<tr>
+<td>Permissions</td>
+<td><a href="permissions.all.log.html">permissions.all.log.html</td>
+<td>It contains tasks related directly to the permissions</td>
+</tr>
+<tr>
+<td>Services</td>
+<td><a href="services.all.log.html">services.all.log.html</td>
+<td>It contains tasks related directly to the system services</td>
+</tr>
+<tr>
+<td>Network</td>
+<td><a href="network.all.log.html">network.all.log.html</td>
+<td>It contains tasks related directly to the network stack</td>
+</tr>
+<tr>
+<td>Other</td>
+<td><a href="other.all.log.html">other.all.log.html</td>
+<td>It contains all other tasks</td>
+</tr>
+</tbody>
+</table>
+
+<!--========================================================================-->
+
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+
+<!--========================================================================-->
+
+<script src="vendor/bootstrap/js/popper.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!--========================================================================-->
+
+<script src="vendor/select2/select2.min.js"></script>
+
+<!--========================================================================-->
+
+<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script>
+$('.js-pscroll').each(function(){
+var ps = new PerfectScrollbar(this);
+
+$(window).on('resize', function(){
+ps.update();
+})
+});
+
+</script>
+
+<!--========================================================================-->
+
+<script src="js/main.js"></script>
+
+</body>
+</html>
