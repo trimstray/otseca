@@ -396,8 +396,6 @@ function __main__() {
   _sprintf "head" "Dump system information"
 
   _TASKS=()
-  _ALL_TASKS=("${SYSTEM_STACK[@]}" "${FS_STACK[@]}" "${PERMISSIONS_STACK[@]}" \
-              "${SERVICES_STACK[@]}" "${NETWORK_STACK[@]}" "${OTHER_STACK[@]}")
 
   _tasks_system=1
   _tasks_fs=1
@@ -410,7 +408,6 @@ function __main__() {
 
   if [[ ! -z "$tasks_type" ]] ; then
 
-    _tasks_num="${#_ALL_TASKS[@]}"
     _xcount=1
 
     while [[ "$_xcount" -le "$_fixed_tasks_num" ]] ; do
