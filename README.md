@@ -14,6 +14,10 @@
     <img src="https://img.shields.io/badge/Version-v1.0.2-lightgrey.svg"
         alt="Version">
   </a>
+  <a href="https://img.shields.io/badge/Commands-142-orange.svg">
+    <img src="https://img.shields.io/badge/Commands-142-orange.svg"
+        alt="Commands">
+  </a>
   <a href="https://travis-ci.org/trimstray/otseca">
     <img src="https://travis-ci.org/trimstray/otseca.svg?branch=master"
         alt="Travis-CI">
