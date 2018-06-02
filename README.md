@@ -83,6 +83,28 @@ An exemplary result of the process of collecting information from the local syst
         alt="Master">
 </p>
 
+## Parameters
+
+Below is a list of available options:
+
+```bash
+  Usage:
+    otseca <option|long-option>
+
+  Examples:
+    otseca --help
+    otseca --format html
+    otseca --format html --ignore-failed
+    otseca --format raw-html --task system,network
+
+  Options:
+        --help                      show this message
+     -f|--format <key>              set output format (key: html/raw-html)
+     -t|--tasks <key>               set specific task to do
+                                    (key: system, fs, permissions, services, network, other)
+        --ignore-failed             do not exit with nonzero on commands failed
+```
+
 ## Reports
 
 **Otseca** generates reports in html (js, css and other) or raw-html (pure html) formats.

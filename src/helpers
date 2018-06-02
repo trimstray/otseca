@@ -606,6 +606,8 @@ function _help_() {
   Examples:
     $_init_name --help
     $_init_name --format html
+    $_init_name --format html --ignore-failed
+    $_init_name --format raw-html --task system,network
 
   Options:
         --help                      show this message
