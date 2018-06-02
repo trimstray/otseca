@@ -25,7 +25,6 @@
 
 <div align="center">
    <a href="#description">Description</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-   <a href="#how-to-use">How To Use</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
    <a href="#requirements">Requirements</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
    <a href="#reports">Reports</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
    <a href="#other">Other</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -53,27 +52,6 @@
 **<u>Otseca</u>** is a open source security auditing tool to search and dump system configuration. It allows you to generate reports in **HTML** or **RAW-HTML** formats.
 
 For more information, see **<a href="https://github.com/trimstray/otseca/wiki">wiki</a>**.
-
-## How To Use
-
-It's simple:
-
-```bash
-# Clone this repository
-git clone https://github.com/trimstray/otseca
-
-# Go into the repository
-cd otseca
-
-# Install
-./setup.sh install
-
-# Run the app
-otseca
-```
-
-> * symlink to `bin/otseca` is placed in `/usr/local/bin`
-> * man page is placed in `/usr/local/man/man8`
 
 ## Requirements
 
