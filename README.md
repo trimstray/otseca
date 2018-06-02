@@ -23,16 +23,15 @@
   </a>
 </p>
 
-<p align="center">
-   <a href="#description">Description</a>
- • <a href="#how-to-use">How To Use</a>
- • <a href="#requirements">Requirements</a>
- • <a href="#output">Output</a>
- • <a href="#reports">Reports</a>
- • <a href="#other">Other</a>
- • <a href="#license">License</a>
- • <a href="https://github.com/trimstray/otseca/wiki">Wiki</a>
-</p>
+<div align="center">
+   <a href="#description">Description</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+   <a href="#how-to-use">How To Use</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+   <a href="#requirements">Requirements</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+   <a href="#reports">Reports</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+   <a href="#other">Other</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+   <a href="#license">License</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+   <a href="https://github.com/trimstray/otseca/wiki">Wiki</a>
+</div>
 
 <div align="center">
   <sub>Created by
