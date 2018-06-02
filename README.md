@@ -30,7 +30,8 @@
 <div align="center">
    <a href="#description">Description</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
    <a href="#requirements">Requirements</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-   <a href="#output-example">Output example</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+   <a href="#output">Output</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+   <a href="#parameters">Parameters</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
    <a href="#reports">Reports</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
    <a href="#other">Other</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
    <a href="#license">License</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -60,18 +61,22 @@
 
 **<u>Otseca</u>** is a open source security auditing tool to search and dump system configuration. It allows you to generate reports in **HTML** or **RAW-HTML** formats.
 
-For more information, see **<a href="https://github.com/trimstray/otseca/wiki">wiki</a>**.
+The basic goal is to get as much information about the scanned system as possible for later analysis. **<u>Otseca</u>** contains many predefined commands, however, nothing prevents you from creating your own according to your needs. In addition, it automates the entire information gathering process.
+
+After the scan finishes, a report is generated to examine specific nooks of the system.
 
 ## Requirements
 
 This tool working with:
 
-- **GNU/Linux** or **BSD** (testing on Debian, CentOS and FreeBSD)
+- **GNU/Linux** (testing on Debian and CentOS)
 - **Bash** (testing on 4.4.19)
 
 Also you will need **root access**.
 
-## Output example
+## Output
+
+An exemplary result of the process of collecting information from the local system:
 
 <p align="center">
     <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_output.png"
