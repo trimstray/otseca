@@ -47,6 +47,10 @@
 
 <br>
 
+***
+
+<br>
+
 <p align="center">
     <img src="/doc/img/otseca_short_desc.png"
         alt="Master">
