@@ -27,6 +27,7 @@
    <a href="#description">Description</a>
  • <a href="#how-to-use">How To Use</a>
  • <a href="#requirements">Requirements</a>
+ • <a href="#output">Output</a>
  • <a href="#reports">Reports</a>
  • <a href="#other">Other</a>
  • <a href="#license">License</a>
@@ -44,7 +45,7 @@
 <br>
 
 <p align="center">
-    <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_output.png"
+    <img src="/doc/img/otseca_short_desc.png"
         alt="Master">
 </p>
 
@@ -83,6 +84,13 @@ This tool working with:
 - **Bash** (testing on 4.4.19)
 
 Also you will need **root access**.
+
+## Output
+
+<p align="center">
+    <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_output.png"
+        alt="Master">
+</p>
 
 ## Reports
 
