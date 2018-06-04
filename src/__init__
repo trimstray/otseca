@@ -397,6 +397,8 @@ function __main__() {
 
   # shellcheck disable=SC2034
   _dump_log="${_dump_dir}/dump.log"
+  # shellcheck disable=SC2034
+  _err_log="${_dump_dir}/err.log"
 
   # ----------------------------------------------------------------------------
 

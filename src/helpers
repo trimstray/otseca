@@ -405,9 +405,10 @@ function _init_cmd() {
   # shellcheck disable=SC2154
   printf "__COMMAND__:%s\\n" \
          "$_msg" \
-         >>"$_log_stdout" >>"${_dump_log}" 2>&1
+         >>"${_dump_log}" 2>&1
 
-  $_cmd >>"$_log_stdout" >>"${_dump_log}" 2>&1 &
+  # shellcheck disable=SC2154
+  $_cmd 2> "${_err_log}" 1>>"${_dump_log}" &
 
   # We keep pid of the last command.
   _pid="$!"
@@ -434,6 +435,11 @@ function _init_cmd() {
 
       _sprintf "stop" "FAIL"
 
+      printf "        \\e[2;2;37m%s\\e[m:\\n" \
+             "stderr"
+
+      sed -e 's/^[ \t]*/         -| /' "${_err_log}"
+
       _logger "stop" \
         "${_FUNCTION_ID}()" \
         "result: fail"
@@ -441,6 +447,11 @@ function _init_cmd() {
     elif [[ "$ignore_errors" -eq 1 ]] ; then
 
       _sprintf "warn" "FAIL"
+
+      printf "        \\e[2;2;37m%s\\e[m:\\n" \
+             "stderr"
+
+      sed -e 's/^[ \t]*/         -| /' "${_err_log}"
 
       _logger "warn" \
         "${_FUNCTION_ID}()" \
@@ -700,6 +711,12 @@ function _after_init() {
   # for _fd in "${_tmpA}" "${_tmpB}" ; do
   #   rm -fr "$_fd"
   # done
+
+  if [[ -e "$_err_log" ]] ; then
+
+    :>"${_err_log}"
+
+  fi
 
   return "$_STATE"
 
