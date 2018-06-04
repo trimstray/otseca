@@ -436,7 +436,7 @@ function _init_cmd() {
 
       _logger "stop" \
         "${_FUNCTION_ID}()" \
-        " result: fail"
+        "result: fail"
 
     elif [[ "$ignore_errors" -eq 1 ]] ; then
 
@@ -444,7 +444,7 @@ function _init_cmd() {
 
       _logger "warn" \
         "${_FUNCTION_ID}()" \
-        " result: fail"
+        "result: fail"
 
     fi
 
