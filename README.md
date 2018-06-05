@@ -14,8 +14,8 @@
     <img src="https://img.shields.io/badge/Version-v1.0.3-lightgrey.svg"
         alt="Version">
   </a>
-  <a href="https://img.shields.io/badge/Commands-142-orange.svg">
-    <img src="https://img.shields.io/badge/Commands-142-orange.svg"
+  <a href="https://img.shields.io/badge/Commands-138-orange.svg">
+    <img src="https://img.shields.io/badge/Commands-138-orange.svg"
         alt="Commands">
   </a>
   <a href="https://travis-ci.org/trimstray/otseca">
