@@ -299,12 +299,12 @@ function _sprintf() {
 
           c_trgb="1;1;32"
 
-          printf '    \t\t\t\t\t\t\t        [ \e['${c_trgb}'m%s\e[m ] \n' \
+          printf '    \t\t\t\t\t\t\t       [ \e['${c_trgb}'m%s\e[m ] \n' \
                  "$_s_info"
 
         else
 
-          printf '    \t\t\t\t\t\t\t        [ \e['${c_trgb}'m%s\e[m ] \n' \
+          printf '    \t\t\t\t\t\t\t       [ \e['${c_trgb}'m%s\e[m ] \n' \
                  "$_s_info"
 
         fi
@@ -315,12 +315,12 @@ function _sprintf() {
 
           c_trgb="1;1;31"
 
-          printf '    \t\t\t\t\t\t\t        [ \e['${c_trgb}'m%s\e[m ] \n' \
+          printf '    \t\t\t\t\t\t\t       [ \e['${c_trgb}'m%s\e[m ] \n' \
                  "$_s_info"
 
         else
 
-          printf '    \t\t\t\t\t\t\t        [ \e['${c_trgb}'m%s\e[m ] \n' \
+          printf '    \t\t\t\t\t\t\t       [ \e['${c_trgb}'m%s\e[m ] \n' \
                  "$_s_info"
 
         fi
@@ -352,12 +352,12 @@ function _sprintf() {
 
             c_trgb="1;2;41"
 
-            printf '    \t\t\t\t\t\t\t        [ \e['${c_trgb}'m%s\e[m ] \n' \
+            printf '    \t\t\t\t\t\t\t       [ \e['${c_trgb}'m%s\e[m ] \n' \
                    "$_s_info"
 
           else
 
-            printf '    \t\t\t\t\t\t\t        [ \e['${c_trgb}'m%s\e[m ] \n' \
+            printf '    \t\t\t\t\t\t\t       [ \e['${c_trgb}'m%s\e[m ] \n' \
                    "$_s_info"
 
           fi
@@ -392,7 +392,10 @@ function _init_cmd() {
   local _FUNCTION_ID="_init_cmd"
   local _STATE="0"
 
-  local _cmd="$1"
+  local _cmd="$*"
+
+  # local _begtime ; _begtime=$(date +%s)
+  # local _endtime
 
   # Uncomment if you want to display executed commands.
   # _sprintf "info" "init: \"$_cmd\""
@@ -404,7 +407,7 @@ function _init_cmd() {
   # Execute command and exit save to file.
   # shellcheck disable=SC2154
   printf "__COMMAND__:%s\\n" \
-         "$_msg" \
+         "$_cmd" \
          >>"${_dump_log}" 2>&1
 
   # shellcheck disable=SC2154
@@ -419,6 +422,24 @@ function _init_cmd() {
   # Very important line:
   # We define the state of the output job from the background.
   wait "$_pid" &>/dev/null && _state="0" || _state="1"
+
+  # _endtime=$(date +%s)
+
+  # Counting the execution time.
+  # _totaltime=$((_endtime - _begtime))
+
+  # if [[ "$_totaltime" -eq 0 ]] ; then
+
+  #   printf "%s\\e[m\\e[2;2;37mtime: <1s\\e[m     " \
+  #          "         "
+
+  # else
+
+  #   printf "%s\\e[m\\e[2;2;37mtime: %dh:%dm:%ds\\e[m" \
+  #          "         " \
+  #          $((_totaltime/3600)) $((_totaltime%3600/60)) $((_totaltime%60))
+
+  # fi
 
   if [[ "$_state" -eq 0 ]] ; then
 
@@ -435,10 +456,14 @@ function _init_cmd() {
 
       _sprintf "stop" "FAIL"
 
-      printf "        \\e[2;2;37m%s\\e[m:\\n" \
+      printf "         \\e[2;1;37m%s:\\e[m\\n" \
              "stderr"
 
-      sed -e 's/^[ \t]*/         -| /' "${_err_log}"
+      tput setaf 246
+
+      sed -e 's/.\{51\}/&\n/g' "${_err_log}" | sed -e 's/^[ \t]*/          /'
+
+      tput sgr0
 
       _logger "stop" \
         "${_FUNCTION_ID}()" \
@@ -448,10 +473,14 @@ function _init_cmd() {
 
       _sprintf "warn" "FAIL"
 
-      printf "        \\e[2;2;37m%s\\e[m:\\n" \
+      printf "         \\e[2;1;37m%s:\\e[m\\n" \
              "stderr"
 
-      sed -e 's/^[ \t]*/         -| /' "${_err_log}"
+      tput setaf 246
+
+      sed -e 's/.\{51\}/&\n/g' "${_err_log}" | sed -e 's/^[ \t]*/          /'
+
+      tput sgr0
 
       _logger "warn" \
         "${_FUNCTION_ID}()" \
@@ -666,9 +695,9 @@ function _before_init() {
     "${_FUNCTION_ID}()" \
     "directory change error: '$_rel'"
 
-  for i in $_log_stdout ; do
-    : >"$i"
-  done
+  # for i in $_log_stdout ; do
+  #   : >"$i"
+  # done
 
   # shellcheck disable=SC2154
   # Flush tmp/ directory.
