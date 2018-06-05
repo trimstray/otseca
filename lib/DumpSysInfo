@@ -27,7 +27,7 @@ function DumpSysInfo() {
   "\"${_arg[@]}\"")
 
   _cmd_args+=(\
-  "eval ${_arg[@]}")
+  "${_arg[@]}")
 
   _STATE="$?"
 
