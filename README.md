@@ -60,11 +60,11 @@
         alt="Master">
 </p>
 
->> **Hint 1**
->> If you do not want the script to be stopped after encountering errors add `--ignore-failed` option.
+>>**Hint 1**  
+>>If you do not want the script to be stopped after encountering errors add `--ignore-failed` script param.
 
->> **Hint 2**
->> Only selected tasks using the `--tasks <task_1, task_2, task_n>`.
+>>**Hint 2**  
+>>Only selected tasks using the `--tasks <task_1, task_2, task_n>` script param.
 
 ## Description
 
