@@ -694,6 +694,7 @@ function __main__() {
 
             printf "    \\e[1;0;36m%s\\e[m \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m" \
                    " " "•" "${_trim_cmd}"
+
             _init_cmd "${_i}"
 
             _tcount=$((_tcount + 1))
@@ -732,7 +733,7 @@ function __main__() {
     OIFS="$IFS"
     IFS=$'\n'
 
-    for _i in "${OTHER_STACK[@]}" ; do
+    for _i in "${_TASKS[@]}" ; do
 
       # shellcheck disable=SC2034
       _dump_log="${_dump_log_all}-${_tcount}"
