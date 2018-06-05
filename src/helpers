@@ -408,7 +408,7 @@ function _init_cmd() {
          >>"${_dump_log}" 2>&1
 
   # shellcheck disable=SC2154
-  $_cmd 2> "${_err_log}" 1>>"${_dump_log}" &
+  eval "$_cmd" 2> "${_err_log}" 1>>"${_dump_log}" &
 
   # We keep pid of the last command.
   _pid="$!"
