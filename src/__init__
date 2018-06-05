@@ -119,7 +119,7 @@ function __main__() {
   # Specifies the call parameters of the script, the exact description
   # can be found in _help_ and file README.md.
   local _short_opt="f:t:i"
-  local _long_opt="help,format:,tasks:,ignore-failed"
+  local _long_opt="help,format:,tasks:,show-errors,ignore-failed"
 
   _GETOPT_PARAMS=$(getopt -o "${_short_opt}" --long "${_long_opt}" \
                    -n "${_init_name}" -- "${__script_params[@]}")
@@ -160,6 +160,12 @@ function __main__() {
         export tasks_type="$2"
 
         shift 2 ;;
+
+      --show-errors)
+
+        export show_errors="1"
+
+        shift ;;
 
       --ignore-failed)
 

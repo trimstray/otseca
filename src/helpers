@@ -456,14 +456,18 @@ function _init_cmd() {
 
       _sprintf "stop" "FAIL"
 
-      printf "         \\e[2;1;37m%s:\\e[m\\n" \
-             "stderr"
+      if [[ "$show_errors" -eq 1 ]] ; then
 
-      tput setaf 246
+        printf "         \\e[2;1;37m%s:\\e[m\\n" \
+               "stderr"
 
-      sed -e 's/.\{51\}/&\n/g' "${_err_log}" | sed -e 's/^[ \t]*/          /'
+        tput setaf 246
 
-      tput sgr0
+        sed -e 's/.\{51\}/&\n/g' "${_err_log}" | sed -e 's/^[ \t]*/          /'
+
+        tput sgr0
+
+      fi
 
       _logger "stop" \
         "${_FUNCTION_ID}()" \
@@ -473,14 +477,18 @@ function _init_cmd() {
 
       _sprintf "warn" "FAIL"
 
-      printf "         \\e[2;1;37m%s:\\e[m\\n" \
-             "stderr"
+      if [[ "$show_errors" -eq 1 ]] ; then
 
-      tput setaf 246
+        printf "         \\e[2;1;37m%s:\\e[m\\n" \
+               "stderr"
 
-      sed -e 's/.\{51\}/&\n/g' "${_err_log}" | sed -e 's/^[ \t]*/          /'
+        tput setaf 246
 
-      tput sgr0
+        sed -e 's/.\{51\}/&\n/g' "${_err_log}" | sed -e 's/^[ \t]*/          /'
+
+        tput sgr0
+
+      fi
 
       _logger "warn" \
         "${_FUNCTION_ID}()" \
@@ -654,6 +662,7 @@ function _help_() {
      -f|--format <key>              set output format (key: html/raw-html)
      -t|--tasks <key>               set specific task to do
                                     (key: system, fs, permissions, services, network, other)
+        --show-errors               show stderr to output
         --ignore-failed             do not exit with nonzero on commands failed
 
 

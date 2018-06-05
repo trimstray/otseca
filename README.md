@@ -105,6 +105,7 @@ Below is a list of available options:
      -f|--format <key>              set output format (key: html/raw-html)
      -t|--tasks <key>               set specific task to do
                                     (key: system, fs, permissions, services, network, other)
+        --show-errors               show stderr to output
         --ignore-failed             do not exit with nonzero on commands failed
 ```
 
