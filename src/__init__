@@ -436,12 +436,36 @@ function __main__() {
           printf "     %s\\n" \
                  "¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨"
 
-          _TASKS=("${SYSTEM_STACK[@]}")
+          # shellcheck disable=SC2034
+          _tcount=0
 
           # shellcheck disable=SC2034
           _dump_log_system="${_dump_dir}/dump.log.${_tdate}-system"
 
-          SetReportType "${_dump_log_system}"
+          OIFS="$IFS"
+          IFS=$'\n'
+
+          for _i in "${SYSTEM_STACK[@]}" ; do
+
+            # shellcheck disable=SC2034
+            _dump_log="${_dump_log_system}-${_tcount}"
+
+            _trim_cmd=$(echo "${_i}" | cut -c -54)
+
+            printf "    \\e[1;0;36m%s\\e[m \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m" \
+                   " " "•" "${_trim_cmd}"
+
+            _init_cmd "${_i}"
+
+            _tcount=$((_tcount + 1))
+
+          done
+
+          IFS="$OIFS"
+
+          unset _i
+
+          echo
 
         fi
 
@@ -460,12 +484,36 @@ function __main__() {
           printf "     %s\\n" \
                  "¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨"
 
-          _TASKS=("${FS_STACK[@]}")
+          # shellcheck disable=SC2034
+          _tcount=0
 
           # shellcheck disable=SC2034
           _dump_log_fs="${_dump_dir}/dump.log.${_tdate}-fs"
 
-          SetReportType "${_dump_log_fs}"
+          OIFS="$IFS"
+          IFS=$'\n'
+
+          for _i in "${FS_STACK[@]}" ; do
+
+            # shellcheck disable=SC2034
+            _dump_log="${_dump_log_fs}-${_tcount}"
+
+            _trim_cmd=$(echo "${_i}" | cut -c -54)
+
+            printf "    \\e[1;0;36m%s\\e[m \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m" \
+                   " " "•" "${_trim_cmd}"
+
+            _init_cmd "${_i}"
+
+            _tcount=$((_tcount + 1))
+
+          done
+
+          IFS="$OIFS"
+
+          unset _i
+
+          echo
 
         fi
 
@@ -484,12 +532,36 @@ function __main__() {
           printf "     %s\\n" \
                  "¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨"
 
-          _TASKS=("${PERMISSIONS_STACK[@]}")
+          # shellcheck disable=SC2034
+          _tcount=0
 
           # shellcheck disable=SC2034
           _dump_log_permissions="${_dump_dir}/dump.log.${_tdate}-permissions"
 
-          SetReportType "${_dump_log_permissions}"
+          OIFS="$IFS"
+          IFS=$'\n'
+
+          for _i in "${PERMISSIONS_STACK[@]}" ; do
+
+            # shellcheck disable=SC2034
+            _dump_log="${_dump_log_permissions}-${_tcount}"
+
+            _trim_cmd=$(echo "${_i}" | cut -c -54)
+
+            printf "    \\e[1;0;36m%s\\e[m \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m" \
+                   " " "•" "${_trim_cmd}"
+
+            _init_cmd "${_i}"
+
+            _tcount=$((_tcount + 1))
+
+          done
+
+          IFS="$OIFS"
+
+          unset _i
+
+          echo
 
         fi
 
@@ -508,12 +580,36 @@ function __main__() {
           printf "     %s\\n" \
                  "¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨"
 
-          _TASKS=("${SERVICES_STACK[@]}")
+          # shellcheck disable=SC2034
+          _tcount=0
 
           # shellcheck disable=SC2034
           _dump_log_services="${_dump_dir}/dump.log.${_tdate}-services"
 
-          SetReportType "${_dump_log_services}"
+          OIFS="$IFS"
+          IFS=$'\n'
+
+          for _i in "${SERVICES_STACK[@]}" ; do
+
+            # shellcheck disable=SC2034
+            _dump_log="${_dump_log_services}-${_tcount}"
+
+            _trim_cmd=$(echo "${_i}" | cut -c -54)
+
+            printf "    \\e[1;0;36m%s\\e[m \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m" \
+                   " " "•" "${_trim_cmd}"
+
+            _init_cmd "${_i}"
+
+            _tcount=$((_tcount + 1))
+
+          done
+
+          IFS="$OIFS"
+
+          unset _i
+
+          echo
 
         fi
 
@@ -532,12 +628,36 @@ function __main__() {
           printf "     %s\\n" \
                  "¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨"
 
-          _TASKS=("${NETWORK_STACK[@]}")
+          # shellcheck disable=SC2034
+          _tcount=0
 
           # shellcheck disable=SC2034
           _dump_log_network="${_dump_dir}/dump.log.${_tdate}-network"
 
-          SetReportType "${_dump_log_network}"
+          OIFS="$IFS"
+          IFS=$'\n'
+
+          for _i in "${NETWORK_STACK[@]}" ; do
+
+            # shellcheck disable=SC2034
+            _dump_log="${_dump_log_network}-${_tcount}"
+
+            _trim_cmd=$(echo "${_i}" | cut -c -54)
+
+            printf "    \\e[1;0;36m%s\\e[m \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m" \
+                   " " "•" "${_trim_cmd}"
+
+            _init_cmd "${_i}"
+
+            _tcount=$((_tcount + 1))
+
+          done
+
+          IFS="$OIFS"
+
+          unset _i
+
+          echo
 
         fi
 
@@ -556,12 +676,35 @@ function __main__() {
           printf "     %s\\n" \
                  "¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨"
 
-          _TASKS=("${OTHER_STACK[@]}")
+          # shellcheck disable=SC2034
+          _tcount=0
 
           # shellcheck disable=SC2034
           _dump_log_other="${_dump_dir}/dump.log.${_tdate}-other"
 
-          SetReportType "${_dump_log_other}"
+          OIFS="$IFS"
+          IFS=$'\n'
+
+          for _i in "${OTHER_STACK[@]}" ; do
+
+            # shellcheck disable=SC2034
+            _dump_log="${_dump_log_other}-${_tcount}"
+
+            _trim_cmd=$(echo "${_i}" | cut -c -54)
+
+            printf "    \\e[1;0;36m%s\\e[m \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m" \
+                   " " "•" "${_trim_cmd}"
+            _init_cmd "${_i}"
+
+            _tcount=$((_tcount + 1))
+
+          done
+
+          IFS="$OIFS"
+
+          unset _i
+
+          echo
 
         fi
 
@@ -581,9 +724,35 @@ function __main__() {
             "${SERVICES_STACK[@]}" "${NETWORK_STACK[@]}" "${OTHER_STACK[@]}")
 
     # shellcheck disable=SC2034
+    _tcount=0
+
+    # shellcheck disable=SC2034
     _dump_log_all="${_dump_dir}/dump.log.${_tdate}-all"
 
-    SetReportType "${_dump_log_all}"
+    OIFS="$IFS"
+    IFS=$'\n'
+
+    for _i in "${OTHER_STACK[@]}" ; do
+
+      # shellcheck disable=SC2034
+      _dump_log="${_dump_log_all}-${_tcount}"
+
+      _trim_cmd=$(echo "${_i}" | cut -c -54)
+
+      printf "    \\e[1;0;36m%s\\e[m \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m" \
+             " " "•" "${_trim_cmd}"
+
+      _init_cmd "${_i}"
+
+      _tcount=$((_tcount + 1))
+
+    done
+
+    IFS="$OIFS"
+
+    unset _i
+
+    echo
 
     # shellcheck disable=SC2034
     _tasks_all=1
@@ -658,7 +827,7 @@ function __main__() {
     _i=$(echo "${i}" | sed 's/.\///g')
 
     # shellcheck disable=SC2034
-    _command=$(grep "__COMMAND__" "$i" | cut -d ":" -f2)
+    _command=$(grep "__COMMAND__" "$i" | cut -d ":" -f2-)
     # shellcheck disable=SC2034
     _output=$(grep -v "__COMMAND__" "$i")
 
@@ -724,7 +893,7 @@ function __main__() {
 
   done
 
-  for i in $(find . -type f | sort -n -k 2 | grep "dump.log.") ; do
+  for i in $(find . -type f | sort -n -k 2 | grep "dump.log.\\|err.log") ; do
 
     if [[ -f "$i" ]] ; then
 
