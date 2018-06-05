@@ -36,7 +36,6 @@
    <a href="#reports">Reports</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
    <a href="#other">Other</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
    <a href="#license">License</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-   <a href="https://github.com/trimstray/otseca/wiki">Wiki</a>
 </div>
 
 <div align="center">
@@ -60,11 +59,11 @@
         alt="Master">
 </p>
 
->>**Hint 1**  
->>If you do not want the script to be stopped after encountering errors add `--ignore-failed` script param.
+> **Hint 1**  
+> If you do not want the script to be stopped after encountering errors add `--ignore-failed` script param.
 
->>**Hint 2**  
->>Only selected tasks using the `--tasks <task_1, task_2, task_n>` script param.
+> **Hint 2**  
+> Only selected tasks using the `--tasks <task_1, task_2, task_n>` script param.
 
 ## Description
 
