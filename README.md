@@ -10,8 +10,8 @@
     <img src="https://img.shields.io/badge/Branch-master-green.svg"
         alt="Branch">
   </a>
-  <a href="https://img.shields.io/badge/Version-v1.0.2-lightgrey.svg">
-    <img src="https://img.shields.io/badge/Version-v1.0.2-lightgrey.svg"
+  <a href="https://img.shields.io/badge/Version-v1.0.3-lightgrey.svg">
+    <img src="https://img.shields.io/badge/Version-v1.0.3-lightgrey.svg"
         alt="Version">
   </a>
   <a href="https://img.shields.io/badge/Commands-142-orange.svg">
@@ -59,6 +59,12 @@
     <img src="/doc/img/otseca_short_desc.png"
         alt="Master">
 </p>
+
+>> **Hint 1**
+>> If you do not want the script to be stopped after encountering errors add `--ignore-failed` option.
+
+>> **Hint 2**
+>> Only selected tasks using the `--tasks <task_1, task_2, task_n>`.
 
 ## Description
 
