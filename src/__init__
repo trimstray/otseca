@@ -412,6 +412,7 @@ function __main__() {
 
   _sprintf "head" "Dump system information"
 
+  # shellcheck disable=SC2034
   _TASKS=()
 
   _tasks_system=1
@@ -423,348 +424,112 @@ function __main__() {
 
   _fixed_tasks_num=6
 
-  if [[ ! -z "$tasks_type" ]] ; then
+  _xcount=1
 
-    _xcount=1
+  while [[ "$_xcount" -le "$_fixed_tasks_num" ]] ; do
 
-    while [[ "$_xcount" -le "$_fixed_tasks_num" ]] ; do
+    # shellcheck disable=SC2034
+    _tdate=$(date +%s)
+
+    if [[ "$tasks_type" = *"system"* ]] || [[ -z "$tasks_type" ]] ; then
+
+      if [[ "$_tasks_system" -eq 1 ]] ; then
+
+        # shellcheck disable=SC2034
+        _STACK=("${SYSTEM_STACK[@]}")
+
+        InitTasks "system"
+
+      fi
 
       # shellcheck disable=SC2034
-      _tdate=$(date +%s)
+      _tasks_system=0
 
-      if [[ "$tasks_type" = *"system"* ]] ; then
+    fi
 
-        if [[ "$_tasks_system" -eq 1 ]] ; then
+    if [[ "$tasks_type" = *"fs"* ]] || [[ -z "$tasks_type" ]] ; then
 
-          printf "     \\e[0;1;36m%s\\e[m task: \\e[1;1;33m%s\\e[m\\n" \
-                 "×" "SYSTEM"
-
-          printf "     %s\\n" \
-                 "¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨"
-
-          # shellcheck disable=SC2034
-          _tcount=0
-
-          # shellcheck disable=SC2034
-          _dump_log_system="${_dump_dir}/dump.log.${_tdate}-system"
-
-          OIFS="$IFS"
-          IFS=$'\n'
-
-          for _i in "${SYSTEM_STACK[@]}" ; do
-
-            # shellcheck disable=SC2034
-            _dump_log="${_dump_log_system}-${_tcount}"
-
-            _trim_cmd=$(echo "${_i}" | cut -c -54)
-
-            printf "    \\e[1;0;36m%s\\e[m \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m" \
-                   " " "•" "${_trim_cmd}"
-
-            _init_cmd "${_i}"
-
-            _tcount=$((_tcount + 1))
-
-          done
-
-          IFS="$OIFS"
-
-          unset _i
-
-          echo
-
-        fi
+      if [[ "$_tasks_fs" -eq 1 ]] ; then
 
         # shellcheck disable=SC2034
-        _tasks_system=0
+        _STACK=("${FS_STACK[@]}")
+
+        InitTasks "fs"
 
       fi
-
-      if [[ "$tasks_type" = *"fs"* ]] ; then
-
-        if [[ "$_tasks_fs" -eq 1 ]] ; then
-
-          printf "     \\e[0;1;36m%s\\e[m task: \\e[1;1;33m%s\\e[m\\n" \
-                 "×" "FILESYSTEM"
-
-          printf "     %s\\n" \
-                 "¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨"
-
-          # shellcheck disable=SC2034
-          _tcount=0
-
-          # shellcheck disable=SC2034
-          _dump_log_fs="${_dump_dir}/dump.log.${_tdate}-fs"
-
-          OIFS="$IFS"
-          IFS=$'\n'
-
-          for _i in "${FS_STACK[@]}" ; do
-
-            # shellcheck disable=SC2034
-            _dump_log="${_dump_log_fs}-${_tcount}"
-
-            _trim_cmd=$(echo "${_i}" | cut -c -54)
-
-            printf "    \\e[1;0;36m%s\\e[m \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m" \
-                   " " "•" "${_trim_cmd}"
-
-            _init_cmd "${_i}"
-
-            _tcount=$((_tcount + 1))
-
-          done
-
-          IFS="$OIFS"
-
-          unset _i
-
-          echo
-
-        fi
-
-        # shellcheck disable=SC2034
-        _tasks_fs=0
-
-      fi
-
-      if [[ "$tasks_type" = *"permissions"* ]] ; then
-
-        if [[ "$_tasks_permissions" -eq 1 ]] ; then
-
-          printf "     \\e[0;1;36m%s\\e[m task: \\e[1;1;33m%s\\e[m\\n" \
-                 "×" "PERMISSIONS"
-
-          printf "     %s\\n" \
-                 "¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨"
-
-          # shellcheck disable=SC2034
-          _tcount=0
-
-          # shellcheck disable=SC2034
-          _dump_log_permissions="${_dump_dir}/dump.log.${_tdate}-permissions"
-
-          OIFS="$IFS"
-          IFS=$'\n'
-
-          for _i in "${PERMISSIONS_STACK[@]}" ; do
-
-            # shellcheck disable=SC2034
-            _dump_log="${_dump_log_permissions}-${_tcount}"
-
-            _trim_cmd=$(echo "${_i}" | cut -c -54)
-
-            printf "    \\e[1;0;36m%s\\e[m \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m" \
-                   " " "•" "${_trim_cmd}"
-
-            _init_cmd "${_i}"
-
-            _tcount=$((_tcount + 1))
-
-          done
-
-          IFS="$OIFS"
-
-          unset _i
-
-          echo
-
-        fi
-
-        # shellcheck disable=SC2034
-        _tasks_permissions=0
-
-      fi
-
-      if [[ "$tasks_type" = *"services"* ]] ; then
-
-        if [[ "$_tasks_services" -eq 1 ]] ; then
-
-          printf "     \\e[0;1;36m%s\\e[m task: \\e[1;1;33m%s\\e[m\\n" \
-                 "×" "SERVICES"
-
-          printf "     %s\\n" \
-                 "¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨"
-
-          # shellcheck disable=SC2034
-          _tcount=0
-
-          # shellcheck disable=SC2034
-          _dump_log_services="${_dump_dir}/dump.log.${_tdate}-services"
-
-          OIFS="$IFS"
-          IFS=$'\n'
-
-          for _i in "${SERVICES_STACK[@]}" ; do
-
-            # shellcheck disable=SC2034
-            _dump_log="${_dump_log_services}-${_tcount}"
-
-            _trim_cmd=$(echo "${_i}" | cut -c -54)
-
-            printf "    \\e[1;0;36m%s\\e[m \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m" \
-                   " " "•" "${_trim_cmd}"
-
-            _init_cmd "${_i}"
-
-            _tcount=$((_tcount + 1))
-
-          done
-
-          IFS="$OIFS"
-
-          unset _i
-
-          echo
-
-        fi
-
-        # shellcheck disable=SC2034
-        _tasks_services=0
-
-      fi
-
-      if [[ "$tasks_type" = *"network"* ]] ; then
-
-        if [[ "$_tasks_network" -eq 1 ]] ; then
-
-          printf "     \\e[0;1;36m%s\\e[m task: \\e[1;1;33m%s\\e[m\\n" \
-                 "×" "NETWORK"
-
-          printf "     %s\\n" \
-                 "¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨"
-
-          # shellcheck disable=SC2034
-          _tcount=0
-
-          # shellcheck disable=SC2034
-          _dump_log_network="${_dump_dir}/dump.log.${_tdate}-network"
-
-          OIFS="$IFS"
-          IFS=$'\n'
-
-          for _i in "${NETWORK_STACK[@]}" ; do
-
-            # shellcheck disable=SC2034
-            _dump_log="${_dump_log_network}-${_tcount}"
-
-            _trim_cmd=$(echo "${_i}" | cut -c -54)
-
-            printf "    \\e[1;0;36m%s\\e[m \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m" \
-                   " " "•" "${_trim_cmd}"
-
-            _init_cmd "${_i}"
-
-            _tcount=$((_tcount + 1))
-
-          done
-
-          IFS="$OIFS"
-
-          unset _i
-
-          echo
-
-        fi
-
-        # shellcheck disable=SC2034
-        _tasks_network=0
-
-      fi
-
-      if [[ "$tasks_type" = *"other"* ]] ; then
-
-        if [[ "$_tasks_other" -eq 1 ]] ; then
-
-          printf "     \\e[0;1;36m%s\\e[m task: \\e[1;1;33m%s\\e[m\\n" \
-                 "×" "OTHER"
-
-          printf "     %s\\n" \
-                 "¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨"
-
-          # shellcheck disable=SC2034
-          _tcount=0
-
-          # shellcheck disable=SC2034
-          _dump_log_other="${_dump_dir}/dump.log.${_tdate}-other"
-
-          OIFS="$IFS"
-          IFS=$'\n'
-
-          for _i in "${OTHER_STACK[@]}" ; do
-
-            # shellcheck disable=SC2034
-            _dump_log="${_dump_log_other}-${_tcount}"
-
-            _trim_cmd=$(echo "${_i}" | cut -c -54)
-
-            printf "    \\e[1;0;36m%s\\e[m \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m" \
-                   " " "•" "${_trim_cmd}"
-
-            _init_cmd "${_i}"
-
-            _tcount=$((_tcount + 1))
-
-          done
-
-          IFS="$OIFS"
-
-          unset _i
-
-          echo
-
-        fi
-
-        # shellcheck disable=SC2034
-        _tasks_other=0
-
-      fi
-
-      _xcount=$((_xcount + 1))
-
-    done
-
-  else
-
-    # shellcheck disable=SC2034
-    _TASKS=("${SYSTEM_STACK[@]}" "${FS_STACK[@]}" "${PERMISSIONS_STACK[@]}" \
-            "${SERVICES_STACK[@]}" "${NETWORK_STACK[@]}" "${OTHER_STACK[@]}")
-
-    # shellcheck disable=SC2034
-    _tcount=0
-
-    # shellcheck disable=SC2034
-    _dump_log_all="${_dump_dir}/dump.log.${_tdate}-all"
-
-    OIFS="$IFS"
-    IFS=$'\n'
-
-    for _i in "${_TASKS[@]}" ; do
 
       # shellcheck disable=SC2034
-      _dump_log="${_dump_log_all}-${_tcount}"
+      _tasks_fs=0
 
-      _trim_cmd=$(echo "${_i}" | cut -c -54)
+    fi
 
-      printf "    \\e[1;0;36m%s\\e[m \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m" \
-             " " "•" "${_trim_cmd}"
+    if [[ "$tasks_type" = *"permissions"* ]] || [[ -z "$tasks_type" ]] ; then
 
-      _init_cmd "${_i}"
+      if [[ "$_tasks_permissions" -eq 1 ]] ; then
 
-      _tcount=$((_tcount + 1))
+        # shellcheck disable=SC2034
+        _STACK=("${PERMISSIONS_STACK[@]}")
 
-    done
+        InitTasks "permissions"
 
-    IFS="$OIFS"
+      fi
 
-    unset _i
+      # shellcheck disable=SC2034
+      _tasks_permissions=0
 
-    echo
+    fi
 
-    # shellcheck disable=SC2034
-    _tasks_all=1
+    if [[ "$tasks_type" = *"services"* ]] || [[ -z "$tasks_type" ]] ; then
 
-  fi
+      if [[ "$_tasks_services" -eq 1 ]] ; then
+
+        # shellcheck disable=SC2034
+        _STACK=("${SERVICES_STACK[@]}")
+
+        InitTasks "services"
+
+      fi
+
+      # shellcheck disable=SC2034
+      _tasks_services=0
+
+    fi
+
+    if [[ "$tasks_type" = *"network"* ]] || [[ -z "$tasks_type" ]] ; then
+
+      if [[ "$_tasks_network" -eq 1 ]] ; then
+
+        # shellcheck disable=SC2034
+        _STACK=("${NETWORK_STACK[@]}")
+
+        InitTasks "network"
+
+      fi
+
+      # shellcheck disable=SC2034
+      _tasks_network=0
+
+    fi
+
+    if [[ "$tasks_type" = *"other"* ]] || [[ -z "$tasks_type" ]] ; then
+
+      if [[ "$_tasks_other" -eq 1 ]] ; then
+
+        # shellcheck disable=SC2034
+        _STACK=("${OTHER_STACK[@]}")
+
+        InitTasks "other"
+
+      fi
+
+      # shellcheck disable=SC2034
+      _tasks_other=0
+
+    fi
+
+    _xcount=$((_xcount + 1))
+
+  done
 
   # ----------------------------------------------------------------------------
 
