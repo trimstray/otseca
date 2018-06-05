@@ -299,12 +299,12 @@ function _sprintf() {
 
           c_trgb="1;1;32"
 
-          printf '    \t\t\t\t\t\t\t       [ \e['${c_trgb}'m%s\e[m ] \n' \
+          printf '    \t\t\t\t\t\t\t        [ \e['${c_trgb}'m%s\e[m ] \n' \
                  "$_s_info"
 
         else
 
-          printf '    \t\t\t\t\t\t\t       [ \e['${c_trgb}'m%s\e[m ] \n' \
+          printf '    \t\t\t\t\t\t\t        [ \e['${c_trgb}'m%s\e[m ] \n' \
                  "$_s_info"
 
         fi
@@ -315,12 +315,12 @@ function _sprintf() {
 
           c_trgb="1;1;31"
 
-          printf '    \t\t\t\t\t\t\t       [ \e['${c_trgb}'m%s\e[m ] \n' \
+          printf '    \t\t\t\t\t\t\t        [ \e['${c_trgb}'m%s\e[m ] \n' \
                  "$_s_info"
 
         else
 
-          printf '    \t\t\t\t\t\t\t       [ \e['${c_trgb}'m%s\e[m ] \n' \
+          printf '    \t\t\t\t\t\t\t        [ \e['${c_trgb}'m%s\e[m ] \n' \
                  "$_s_info"
 
         fi
@@ -352,12 +352,12 @@ function _sprintf() {
 
             c_trgb="1;2;41"
 
-            printf '    \t\t\t\t\t\t\t       [ \e['${c_trgb}'m%s\e[m ] \n' \
+            printf '    \t\t\t\t\t\t\t        [ \e['${c_trgb}'m%s\e[m ] \n' \
                    "$_s_info"
 
           else
 
-            printf '    \t\t\t\t\t\t\t       [ \e['${c_trgb}'m%s\e[m ] \n' \
+            printf '    \t\t\t\t\t\t\t        [ \e['${c_trgb}'m%s\e[m ] \n' \
                    "$_s_info"
 
           fi
