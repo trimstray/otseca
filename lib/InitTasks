@@ -23,39 +23,43 @@ function InitTasks() {
 
   local _task_type="$1"
 
-  printf "     \\e[0;1;36m%s\\e[m task: \\e[1;1;33m%s\\e[m\\n" \
-         "×" "$(echo "$_task_type" | tr '[:lower:]' '[:upper:]')"
+  if [[ "${#_STACK[@]}" -ne 0 ]] ; then
 
-  printf "     %s\\n" \
-         "¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨"
+    printf "     \\e[0;1;36m%s\\e[m task: \\e[1;1;33m%s\\e[m\\n" \
+          "×" "$(echo "$_task_type" | tr '[:lower:]' '[:upper:]')"
 
-  # shellcheck disable=SC2034
-  _tcount=0
+    printf "     %s\\n" \
+          "¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨"
 
-  OIFS="$IFS"
-  IFS=$'\n'
+    # shellcheck disable=SC2034
+    _tcount=0
 
-  for _i in "${_STACK[@]}" ; do
+    OIFS="$IFS"
+    IFS=$'\n'
 
-    # shellcheck disable=SC2034,SC2154
-    _dump_log="${_dump_dir}/dump.log.${_tdate}-${_task_type}-${_tcount}"
+    for _i in "${_STACK[@]}" ; do
 
-   _trim_cmd=$(echo "${_i}" | cut -c -54)
+      # shellcheck disable=SC2034,SC2154
+      _dump_log="${_dump_dir}/dump.log.${_tdate}-${_task_type}-${_tcount}"
 
-    printf "    \\e[1;0;36m%s\\e[m \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m" \
-           " " "•" "${_trim_cmd}"
+      _trim_cmd=$(echo "${_i}" | cut -c -54)
 
-    _init_cmd "${_i}"
+      printf "    \\e[1;0;36m%s\\e[m \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m" \
+             " " "•" "${_trim_cmd}"
 
-    _tcount=$((_tcount + 1))
+      _init_cmd "${_i}"
 
-  done
+      _tcount=$((_tcount + 1))
 
-  IFS="$OIFS"
+    done
 
-  unset _i
+    IFS="$OIFS"
 
-  echo
+    unset _i
+
+    echo
+
+  fi
 
   _STATE="$?"
 
