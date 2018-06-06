@@ -103,7 +103,7 @@ Below is a list of available options:
     otseca --help
     otseca --format html
     otseca --format html --ignore-failed
-    otseca --format raw-html --task system,network
+    otseca --format raw-html --tasks system,network
 
   Options:
         --help                      show this message
