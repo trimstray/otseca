@@ -109,7 +109,7 @@ Below is a list of available options:
         --help                      show this message
      -f|--format <key>              set output format (key: html/raw-html)
      -t|--tasks <key>               set specific task to do
-                                    (key: system, fs, permissions, services, network, other)
+                                    (key: system, fs, permissions, services, network, external)
         --show-errors               show stderr to output
         --ignore-failed             do not exit with nonzero on commands failed
 ```
@@ -138,7 +138,7 @@ The report that can be performed consists of the following sections (stacks):
 - **permissions**  - dump info about permissions, eg. `find / -nouser -o -nogroup -print`, (output file: permissions.all.log.html)
 - **services** - dump info about system services, eg. `ntpq -p`, (output file: services.all.log.html)
 - **network** - dump info from network layer, eg. `netstat -tunap`, (output file: network.all.log.html)
-- **other** - all other, also user tasks, eg. `yum list installed`, (output file: other.all.log.html)
+- **external** - all external, also user tasks, eg. `yum list installed` or included from `etc/` directory, (output file: external.all.log.html)
 
 HTML reports consist of the following blocks:
 
