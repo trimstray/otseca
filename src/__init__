@@ -420,7 +420,7 @@ function __main__() {
   _tasks_permissions=1
   _tasks_services=1
   _tasks_network=1
-  _tasks_other=1
+  _tasks_external=1
 
   _fixed_tasks_num=6
 
@@ -511,19 +511,19 @@ function __main__() {
 
     fi
 
-    if [[ "$tasks_type" = *"other"* ]] || [[ -z "$tasks_type" ]] ; then
+    if [[ "$tasks_type" = *"external"* ]] || [[ -z "$tasks_type" ]] ; then
 
-      if [[ "$_tasks_other" -eq 1 ]] ; then
+      if [[ "$_tasks_external" -eq 1 ]] ; then
 
         # shellcheck disable=SC2034
-        _STACK=("${OTHER_STACK[@]}")
+        _STACK=("${EXTERNAL_STACK[@]}")
 
-        InitTasks "other"
+        InitTasks "external"
 
       fi
 
       # shellcheck disable=SC2034
-      _tasks_other=0
+      _tasks_external=0
 
     fi
 

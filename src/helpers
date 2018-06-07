@@ -661,7 +661,7 @@ function _help_() {
         --help                      show this message
      -f|--format <key>              set output format (key: html/raw-html)
      -t|--tasks <key>               set specific task to do
-                                    (key: system, fs, permissions, services, network, other)
+                                    (key: system, fs, permissions, services, network, external)
         --show-errors               show stderr to output
         --ignore-failed             do not exit with nonzero on commands failed
 
