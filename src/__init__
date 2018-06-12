@@ -594,7 +594,7 @@ function __main__() {
   printf "     \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m\\n" \
          "•" "create output log"
 
-  for i in $(find . -type f | sort -n -k 2) ; do
+  for i in $(find . -type f | sort --version-sort) ; do
 
     _i=$(echo "${i}" | sed 's/.\///g')
 
@@ -623,7 +623,7 @@ function __main__() {
   printf "     \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m\\n" \
          "•" "create output report"
 
-  for i in $(find . -type f | sort -n -k 2 | grep ".all.log") ; do
+  for i in $(find . -type f | sort --version-sort | grep ".all.log") ; do
 
     _i=$(echo "${i}" | sed 's/.\///g')
 
@@ -665,7 +665,7 @@ function __main__() {
 
   done
 
-  for i in $(find . -type f | sort -n -k 2 | grep "dump.log.\\|err.log") ; do
+  for i in $(find . -type f | grep "dump.log.\\|err.log") ; do
 
     if [[ -f "$i" ]] ; then
 
