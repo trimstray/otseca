@@ -134,7 +134,6 @@ It's the main file which contains a list of reports such as system or network.
 The report that can be performed consists of the following sections (stacks):
 
 - **system** - dump info from system commands, eg. `sysctl -a`, (output file: system.all.log.html)
-- **filesystem** - dump info about files and directories layer, eg. `cat /etc/hosts.allow`, (output file: filesystem.all.log.html)
 - **permissions**  - dump info about permissions, eg. `find / -nouser -o -nogroup -print`, (output file: permissions.all.log.html)
 - **services** - dump info about system services, eg. `ntpq -p`, (output file: services.all.log.html)
 - **network** - dump info from network layer, eg. `netstat -tunap`, (output file: network.all.log.html)
