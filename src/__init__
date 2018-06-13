@@ -601,7 +601,9 @@ function __main__() {
     # shellcheck disable=SC2034
     _command=$(grep "__COMMAND__" "$i" | cut -d ":" -f2-)
     # shellcheck disable=SC2034
-    _output=$(grep -v "__COMMAND__" "$i")
+    _color=$(grep "__TH_COLOR__" "$i" | cut -d ":" -f2)
+    # shellcheck disable=SC2034
+    _output=$(grep -v "__COMMAND__\\|__TH_COLOR__" "$i")
 
     :> "${_output_data}/${_i}"
     :> "${_output_report}/${_i}.html"
