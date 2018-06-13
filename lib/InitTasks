@@ -65,19 +65,6 @@ function InitTasks() {
         printf "    \\e[1;0;36m%s\\e[m \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m" \
                " " "•" "${_xst}"
 
-      elif [[ "$_i" = *"_sysctl"* ]] ; then
-
-        # shellcheck disable=SC2034
-        _msg_pass="DONE"
-        # shellcheck disable=SC2034
-        _msg_fail="FAIL"
-
-        _xfd=$(echo "${_i}" | cut -d " " -f2)
-        _xva=$(echo "${_i}" | cut -d " " -f3)
-
-        printf "    \\e[1;0;36m%s\\e[m \\e[2;2;37m%s\\e[m \\e[1;1;38m%s = %d\\e[m" \
-               " " "•" "${_xfd}" "${_xva}"
-
       elif [[ "$_i" = *"_grep"* ]] ; then
 
         # shellcheck disable=SC2034
@@ -90,6 +77,34 @@ function InitTasks() {
 
         printf "    \\e[1;0;36m%s\\e[m \\e[2;2;37m%s\\e[m \\e[1;1;38m%s in %s\\e[m" \
                " " "•" "${_xst}" "${_xfd}"
+
+      elif [[ "$_i" = *"_stat"* ]] ; then
+
+        # shellcheck disable=SC2034
+        _msg_pass="DONE"
+        # shellcheck disable=SC2034
+        _msg_fail="FAIL"
+
+        # shellcheck disable=SC2034
+        _th_local_color_fail="#EF5753"
+
+        _xst=$(echo "${_i}" | cut -d " " -f2)
+
+        printf "    \\e[1;0;36m%s\\e[m \\e[2;2;37m%s\\e[m \\e[1;1;38mcheck %s\\e[m" \
+               " " "•" "${_xst}"
+
+      elif [[ "$_i" = *"_sysctl"* ]] ; then
+
+        # shellcheck disable=SC2034
+        _msg_pass="DONE"
+        # shellcheck disable=SC2034
+        _msg_fail="FAIL"
+
+        _xfd=$(echo "${_i}" | cut -d " " -f2)
+        _xva=$(echo "${_i}" | cut -d " " -f3)
+
+        printf "    \\e[1;0;36m%s\\e[m \\e[2;2;37m%s\\e[m \\e[1;1;38m%s = %d\\e[m" \
+               " " "•" "${_xfd}" "${_xva}"
 
       else
 
