@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+# shellcheck shell=bash
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _stat()
+#
+# Description:
+#   Checks file permissions.
+#
+# Usage:
+#   _stat string filename
+#
+# Examples:
+#   _stat actions /etc/audit/audit.rules
+#
+
+function _stat() {
+
+  # shellcheck disable=SC2034
+  local _FUNCTION_ID="_stat"
+  local _STATE=0
+
+  local _file="$1"
+
+  if [[ -e "$_file" ]] ; then
+
+    printf "subcommand: %s\\n" "stat"
+    stat "$_file"
+
+    printf "\\nsubcommand: %s\\n" "getfacl"
+    getfacl "$_file"
+
+    printf "subcommand: %s\\n" "ls -ZR"
+    ls -ZR "$_file"
+
+    _STATE="0"
+
+  else
+
+    printf "file not found\\n"
+
+    _STATE="1"
+
+  fi
+
+  return $_STATE
+
+}
