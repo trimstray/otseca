@@ -39,7 +39,7 @@ function GenReport() {
 <table>
 <thead>
 <tr class=\"row100 head\">
-<th class=\"cell100 column1\">COMMAND: ${_command}</th>
+<th class=\"cell100 column1\" style=\"background-color: ${_color};\">COMMAND: ${_command}</th>
 </tr>
 </thead>
 </table>
