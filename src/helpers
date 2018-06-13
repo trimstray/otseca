@@ -411,7 +411,7 @@ function _init_cmd() {
          >>"${_dump_log}" 2>&1
 
   # shellcheck disable=SC2154
-  eval "$_cmd" 2> "${_err_log}" 1>>"${_dump_log}" &
+  eval "$_cmd" 1>> "${_dump_log}" 2>>"${_dump_log}" &
 
   # We keep pid of the last command.
   _pid="$!"
@@ -441,20 +441,34 @@ function _init_cmd() {
 
   # fi
 
+  # shellcheck disable=SC2034
+  _th_global_color="#0074D9"
+
   if [[ "$_state" -eq 0 ]] ; then
 
-    _sprintf "pass" "PASS"
+    _th_global_color="#1F9D55"
+
+    # shellcheck disable=SC2154
+    _sprintf "pass" "${_msg_pass}"
 
     _logger "pass" \
       "${_FUNCTION_ID}()" \
-      "result: pass"
+      "result: ${_msg_pass}"
+
+    # shellcheck disable=SC2154
+    printf "__TH_COLOR__:%s\\n" \
+           "${_th_global_color}" \
+           >>"${_dump_log}" 2>&1
 
   else
 
     # shellcheck disable=SC2154
     if [[ "$ignore_errors" -eq 0 ]] ; then
 
-      _sprintf "stop" "FAIL"
+      _th_global_color="#CC1F1A"
+
+      # shellcheck disable=SC2154
+      _sprintf "stop" "${_msg_fail}"
 
       if [[ "$show_errors" -eq 1 ]] ; then
 
@@ -471,11 +485,13 @@ function _init_cmd() {
 
       _logger "stop" \
         "${_FUNCTION_ID}()" \
-        "result: fail"
+        "result: ${_msg_fail}"
 
     elif [[ "$ignore_errors" -eq 1 ]] ; then
 
-      _sprintf "warn" "FAIL"
+      _th_global_color="#CC1F1A"
+
+      _sprintf "warn" "${_msg_fail}"
 
       if [[ "$show_errors" -eq 1 ]] ; then
 
@@ -492,7 +508,24 @@ function _init_cmd() {
 
       _logger "warn" \
         "${_FUNCTION_ID}()" \
-        "result: fail"
+        "result: ${_msg_fail}"
+
+    fi
+
+    # shellcheck disable=SC2154
+    if [[ "$_th_local_color_fail" == "false" ]] ; then
+
+      # shellcheck disable=SC2154
+      printf "__TH_COLOR__:%s\\n" \
+             "${_th_global_color}" \
+             >>"${_dump_log}" 2>&1
+
+    else
+
+      # shellcheck disable=SC2154
+      printf "__TH_COLOR__:%s\\n" \
+             "${_th_local_color_fail}" \
+             >>"${_dump_log}" 2>&1
 
     fi
 
