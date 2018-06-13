@@ -416,6 +416,7 @@ function __main__() {
   _TASKS=()
 
   _tasks_system=1
+  _tasks_kernel=1
   _tasks_permissions=1
   _tasks_services=1
   _tasks_network=1
@@ -443,6 +444,22 @@ function __main__() {
 
       # shellcheck disable=SC2034
       _tasks_system=0
+
+    fi
+
+    if [[ "$tasks_type" = *"kernel"* ]] || [[ -z "$tasks_type" ]] ; then
+
+      if [[ "$_tasks_kernel" -eq 1 ]] ; then
+
+        # shellcheck disable=SC2034
+        _STACK=("${KERNEL_STACK[@]}")
+
+        InitTasks "kernel"
+
+      fi
+
+      # shellcheck disable=SC2034
+      _tasks_kernel=0
 
     fi
 

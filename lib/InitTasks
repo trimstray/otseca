@@ -53,7 +53,7 @@ function InitTasks() {
       if [[ "$_i" = *"_exec"* ]] ; then
 
         # shellcheck disable=SC2034
-        _msg_pass="INIT"
+        _msg_pass="DONE"
         # shellcheck disable=SC2034
         _msg_fail="FAIL"
 
@@ -68,9 +68,9 @@ function InitTasks() {
       elif [[ "$_i" = *"_grep"* ]] ; then
 
         # shellcheck disable=SC2034
-        _msg_pass="FOUND"
+        _msg_pass="DONE"
         # shellcheck disable=SC2034
-        _msg_fail="NOT FOUND"
+        _msg_fail="FAIL"
 
         _xst=$(echo "${_i}" | cut -d " " -f2)
         _xfd=$(echo "${_i}" | cut -d " " -f3)
@@ -103,7 +103,7 @@ function InitTasks() {
         _xfd=$(echo "${_i}" | cut -d " " -f2)
         _xva=$(echo "${_i}" | cut -d " " -f3)
 
-        printf "    \\e[1;0;36m%s\\e[m \\e[2;2;37m%s\\e[m \\e[1;1;38m%s = %d\\e[m" \
+        printf "    \\e[1;0;36m%s\\e[m \\e[2;2;37m%s\\e[m \\e[1;1;38m%s != %d\\e[m" \
                " " "•" "${_xfd}" "${_xva}"
 
       else
