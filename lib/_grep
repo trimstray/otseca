@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+# shellcheck shell=bash
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _grep()
+#
+# Description:
+#   It helps in checking if the file contains the given string.
+#
+# Usage:
+#   _grep string filename
+#
+# Examples:
+#   _grep actions /etc/audit/audit.rules
+#
+
+function _grep() {
+
+  # shellcheck disable=SC2034
+  local _FUNCTION_ID="_grep"
+  local _STATE=0
+
+  local _string="$1"
+  local _file="$2"
+
+  if [[ -e "$_file" ]] ; then
+
+    grep "$_string" "$_file"
+
+    _STATE="$?"
+
+  else
+
+    _STATE="1"
+
+  fi
+
+  return $_STATE
+
+}
