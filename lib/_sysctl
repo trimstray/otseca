@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+# shellcheck shell=bash
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _sysctl()
+#
+# Description:
+#   It helps in checking whether the kernel param is enabled.
+#
+# Usage:
+#   _sysctl service_name
+#
+# Examples:
+#   _sysctl rsync
+#
+
+function _sysctl() {
+
+  # shellcheck disable=SC2034
+  local _FUNCTION_ID="_sysctl"
+  local _STATE=0
+
+  local _sname="$1"
+  local _value="$2"
+
+  sysctl "${_sname}"
+
+  sysctl "${_sname}" | grep -v "= ${_value}" > /dev/null 2>&1
+
+  _STATE="$?"
+
+  if [[ "$_STATE" -eq 0 ]] ; then
+
+    _STATE="0"
+
+  else
+
+    _STATE="1"
+
+  fi
+
+  return $_STATE
+
+}
