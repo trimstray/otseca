@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+# shellcheck shell=bash
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _systemctl()
+#
+# Description:
+#   It helps in checking whether the service is enabled.
+#
+# Usage:
+#   _systemctl service_name
+#
+# Examples:
+#   _systemctl rsync
+#
+
+function _systemctl() {
+
+  # shellcheck disable=SC2034
+  local _FUNCTION_ID="_systemctl"
+  local _STATE=0
+
+  local _service_name="$1"
+
+  systemctl list-unit-files --state=enabled | grep "$_service_name"
+
+  _STATE="$?"
+
+  return $_STATE
+
+}
