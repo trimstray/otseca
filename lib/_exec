@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+# shellcheck shell=bash
+
+# ``````````````````````````````````````````````````````````````````````````````
+# Function name: _exec()
+#
+# Description:
+#   Exec command.
+#
+# Usage:
+#   _exec command
+#
+# Examples:
+#   _exec nestat -tapn
+#
+
+function _exec() {
+
+  # shellcheck disable=SC2034
+  local _FUNCTION_ID="_exec"
+  local _STATE=0
+
+  local _sname=("${@:1}")
+
+  "${_sname[@]}"
+
+  _STATE="$?"
+
+  if [[ "$_STATE" -eq 0 ]] ; then
+
+    _STATE="0"
+
+  else
+
+    _STATE="1"
+
+  fi
+
+  return $_STATE
+
+}
