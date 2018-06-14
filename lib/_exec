@@ -23,17 +23,20 @@ function _exec() {
 
   local _sname=("${@:1}")
 
-  "${_sname[@]}"
+  # shellcheck disable=SC2155
+  local _xoutput=$("${_sname[@]}" 2>/dev/null)
 
-  _STATE="$?"
+  if [[ ! -z "$_xoutput" ]] ; then
 
-  if [[ "$_STATE" -eq 0 ]] ; then
+    printf "%s\\n" "$_xoutput"
 
     _STATE="0"
 
   else
 
-    _STATE="1"
+    printf "command error or empty output\\n"
+
+    _STATE="254"
 
   fi
 
