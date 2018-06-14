@@ -77,7 +77,7 @@ After the scan finishes, a report is generated to examine specific nooks of the 
 
 This tool working with:
 
-- **GNU/Linux** (testing on Debian and CentOS)
+- **GNU/Linux** (testing on Debian and CentOS)  
 - **Bash** (testing on 4.4.19)
 
 Also you will need **root access**.
@@ -142,12 +142,17 @@ The report that can be performed consists of the following sections (stacks):
 HTML reports consist of the following blocks:
 
 <p align="center">
-    <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_lsmod_output.png"
+    <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_uname_output.png"
         alt="Master">
 </p>
 
 <p align="center">
-    <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_sysctl_output.png"
+    <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_service_output.png"
+        alt="Master">
+</p>
+
+<p align="center">
+    <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_systemctl_rsync_output.png"
         alt="Master">
 </p>
 
