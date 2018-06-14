@@ -34,8 +34,8 @@
    <a href="#output">Output</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
    <a href="#parameters">Parameters</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
    <a href="#reports">Reports</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-   <a href="#other">Other</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-   <a href="#license">License</a>
+   <a href="#how-it-works">How it works</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+   <a href="#other">Other</a>
 </div>
 
 <div align="center">
@@ -54,10 +54,38 @@
 
 ## Introduction
 
-<p align="center">
-    <img src="/doc/img/otseca_short_desc.png"
-        alt="Master">
-</p>
+### For whom?
+
+**Otseca** facilitates collection of many important information about a given system.
+
+It is useful for:
+
+- pentesters
+- security researchers
+- system administrators
+- security professionals
+- hackers
+
+### How To Use
+
+It's simple:
+
+```bash
+# Clone this repository
+git clone https://github.com/trimstray/otseca
+
+# Go into the repository
+cd otseca
+
+# Install
+./setup.sh install
+
+# Run the app
+otseca --ignore-failed --tasks system,network
+```
+
+> * symlink to `bin/otseca` is placed in `/usr/local/bin`
+> * man page is placed in `/usr/local/man/man8`
 
 > **Hint 1**  
 > If you do not want the script to be stopped after encountering errors add `--ignore-failed` script param.
@@ -109,7 +137,8 @@ Below is a list of available options:
         --help                      show this message
      -f|--format <key>              set output format (key: html/raw-html)
      -t|--tasks <key>               set specific task to do
-                                    (key: system, fs, permissions, services, network, external)
+                                    (key: system, kernel, permissions, services, network, external)
+     -o|--output <path>             set path to output directory report
         --show-errors               show stderr to output
         --ignore-failed             do not exit with nonzero on commands failed
 ```
@@ -118,7 +147,7 @@ Below is a list of available options:
 
 **Otseca** generates reports in html (js, css and other) or raw-html (pure html) formats.
 
-> Default path for reports is `{project}/data/output` directory.
+> Default path for reports is `{project}/data/output` directory. If you want to change it, add the `--output <path>` option to call the script.
 
 ### Main page (index.html)
 
@@ -156,6 +185,58 @@ HTML reports consist of the following blocks:
     <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_systemctl_rsync_output.png"
         alt="Master">
 </p>
+
+## How it works
+
+### Tasks
+
+**Otseca** divides his work into **tasks**. Each sets of tasks performs defined commands (eg from the file `etc/otseca.conf`). By default six tasks are available: **system**, **kernel**, **permissions**, **services**, **network** and **external**.
+
+By default, all tasks are performed but you can specify them with the `--tasks` parameter giving one or many tasks as an argument. For example:
+
+```bash
+otseca --ignore-failed --tasks system,kernel
+```
+
+### Commands
+
+They are actual **commands** executed from the configuration file grouped into tasks.
+
+Here is an example of a network task containing several built-in commands:
+
+```bash
+NETWORK_STACK=(\
+
+  "_exec hostname -f" \
+  "_exec ifconfig -a" \
+  "_exec iwconfig" \
+  "_exec netstat -tunap" \
+  "_exec netstat -rn" \
+  "_exec iptables -nL -v" \
+  "_exec iptables -nL -v -t nat" \
+  "_exec iptables -S" \
+  "_exec lsof -ni" \
+
+)
+```
+
+### Submodules
+
+**Submodules** are built-in functions that perform the commands described above. Here is submodules list:
+
+- **_exec** - init standard commands, eg. `_exec ls -l /etc/rsyslog.conf`
+- **_grep** - is responsible for searching for strings in files, eg. `_grep max_log_file /etc/audit/auditd.conf`
+- **_stat** - collects information about files, eg. `_stat /etc/ssh/sshd_config`
+- **_sysctl** - compares the values of the kernel parameters, eg. `_sysctl fs.suid_dumpable 1`
+- **_systemctl** - checks the operation of services, eg. `_systemctl httpd`
+
+### Output states
+
+**Otseca** supports three output (response) states:
+
+- **DONE** - informs that the command was executed correctly, most often it says that you did not find what you are looking for which is good information. The report is marked in _green_
+- **WARN** - informs that the command was not executed correctly (syntax error, no command, etc.). The report is marked in _yellow_
+- **TRUE** - informs that the command was executed correctly and found what we were looking for, e.g. too wide permissions for the file `/etc/sudoers`. The report is marked in _red_
 
 ## Other
 
