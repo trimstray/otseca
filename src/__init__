@@ -118,8 +118,8 @@ function __main__() {
 
   # Specifies the call parameters of the script, the exact description
   # can be found in _help_ and file README.md.
-  local _short_opt="f:t:i"
-  local _long_opt="help,format:,tasks:,show-errors,ignore-failed"
+  local _short_opt="f:t:o"
+  local _long_opt="help,format:,tasks:,output:,show-errors,ignore-failed"
 
   _GETOPT_PARAMS=$(getopt -o "${_short_opt}" --long "${_long_opt}" \
                    -n "${_init_name}" -- "${__script_params[@]}")
@@ -158,6 +158,12 @@ function __main__() {
       -t|--tasks)
 
         export tasks_type="$2"
+
+        shift 2 ;;
+
+      -o|--output)
+
+        export output_path="$2"
 
         shift 2 ;;
 
@@ -372,17 +378,45 @@ function __main__() {
 
   fi
 
-  # shellcheck disable=SC2154
-  if [[ ! -d "$_out" ]] ; then
+  if [[ ! -z "$output_path" ]] ; then
+
+    if [[ ! -d "$output_path" ]] ; then
+
+      mkdir -p "$output_path"
+
+      _logger "info" \
+        "${_FUNCTION_ID}()" \
+        "create output directory: $_out"
+
+      printf "     \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m\\n" \
+             "•" "create output directory"
+
+    fi
+
+    _out="$output_path"
+
+    _logger "info" \
+      "${_FUNCTION_ID}()" \
+      "set output directory: $_out"
 
     printf "     \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m\\n" \
            "•" "set output directory"
 
-    mkdir -p "$_out"
+  else
 
-    _logger "info" \
-      "${_FUNCTION_ID}()" \
-      "create output directory: $_out"
+    # shellcheck disable=SC2154
+    if [[ ! -d "$_out" ]] ; then
+
+      mkdir -p "$_out"
+
+      printf "     \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m\\n" \
+             "•" "create output directory"
+
+      _logger "info" \
+        "${_FUNCTION_ID}()" \
+        "create output directory: $_out"
+
+    fi
 
   fi
 
