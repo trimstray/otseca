@@ -736,6 +736,7 @@ function _help_() {
      -f|--format <key>              set output format (key: html/raw-html)
      -t|--tasks <key>               set specific task to do
                                     (key: system, kernel, permissions, services, network, external)
+     -o|--output <path>             set path to output directory report
         --show-errors               show stderr to output
         --ignore-failed             do not exit with nonzero on commands failed
 
