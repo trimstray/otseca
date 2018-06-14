@@ -133,11 +133,12 @@ It's the main file which contains a list of reports such as system or network.
 
 The report that can be performed consists of the following sections (stacks):
 
-- **system** - dump info from system commands, eg. `sysctl -a`, (output file: system.all.log.html)
-- **permissions**  - dump info about permissions, eg. `find / -nouser -o -nogroup -print`, (output file: permissions.all.log.html)
-- **services** - dump info about system services, eg. `ntpq -p`, (output file: services.all.log.html)
-- **network** - dump info from network layer, eg. `netstat -tunap`, (output file: network.all.log.html)
-- **external** - all external, also user tasks, eg. `yum list installed` or included from `etc/` directory, (output file: external.all.log.html)
+- **system** - dump info from system commands (output file: system.all.log.html)
+- **kernel** - dump info about kernel params (output file: kernel.all.log.html)
+- **permissions**  - dump info about permissions (output file: permissions.all.log.html)
+- **services** - dump info about system services (output file: services.all.log.html)
+- **network** - dump info from network layer (output file: network.all.log.html)
+- **external** - all external, also user tasks or included from `etc/` directory (output file: external.all.log.html)
 
 HTML reports consist of the following blocks:
 
