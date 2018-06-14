@@ -23,9 +23,22 @@ function _systemctl() {
 
   local _service_name="$1"
 
-  systemctl list-unit-files --state=enabled | grep "$_service_name"
+  # shellcheck disable=SC2155
+  local _xoutput=$(systemctl list-unit-files --state=enabled "${_service_name}.service" 2>/dev/null)
 
-  _STATE="$?"
+  if [[ ! "${_xoutput}" = *"${_service_name}"* ]] ; then
+
+    printf "%s\\n" "$_xoutput"
+
+    _STATE="0"
+
+  else
+
+    printf "%s\\n" "$_xoutput"
+
+    _STATE="1"
+
+  fi
 
   return $_STATE
 
