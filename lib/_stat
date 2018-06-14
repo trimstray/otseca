@@ -40,7 +40,7 @@ function _stat() {
 
     printf "file not found\\n"
 
-    _STATE="1"
+    _STATE="254"
 
   fi
 
