@@ -281,7 +281,15 @@ function _sprintf() {
 
         if [[ "$s_color" == "true" ]] ; then
 
-          c_trgb="1;2;37"
+          if [[ "$_msg_fail" == "WARN" ]] ; then
+
+            c_trgb="1;1;33"
+
+          else
+
+            c_trgb="1;2;37"
+
+          fi
 
           printf '    \e['${s_trgb}'m%s\e[m \e['${c_trgb}'m%s\e[m\n' \
                  "$s_char" "$_s_info"
@@ -297,14 +305,22 @@ function _sprintf() {
 
         if [[ "$s_color" == "true" ]] ; then
 
-          c_trgb="1;1;32"
+          if [[ "$_msg_fail" == "WARN" ]] ; then
 
-          printf '    \t\t\t\t\t\t\t        [ \e['${c_trgb}'m%s\e[m ] \n' \
+            c_trgb="1;1;33"
+
+          else
+
+            c_trgb="1;2;32"
+
+          fi
+
+          printf '    \t\t\t\t\t\t\t\t [ \e['${c_trgb}'m%s\e[m ] \n' \
                  "$_s_info"
 
         else
 
-          printf '    \t\t\t\t\t\t\t        [ \e['${c_trgb}'m%s\e[m ] \n' \
+          printf '    \t\t\t\t\t\t\t\t [ \e['${c_trgb}'m%s\e[m ] \n' \
                  "$_s_info"
 
         fi
@@ -313,14 +329,22 @@ function _sprintf() {
 
         if [[ "$s_color" == "true" ]] ; then
 
-          c_trgb="1;1;31"
+          if [[ "$_msg_fail" == "WARN" ]] ; then
 
-          printf '    \t\t\t\t\t\t\t        [ \e['${c_trgb}'m%s\e[m ] \n' \
+            c_trgb="1;1;33"
+
+          else
+
+            c_trgb="1;1;41"
+
+          fi
+
+          printf '    \t\t\t\t\t\t\t\t [ \e['${c_trgb}'m%s\e[m ] \n' \
                  "$_s_info"
 
         else
 
-          printf '    \t\t\t\t\t\t\t        [ \e['${c_trgb}'m%s\e[m ] \n' \
+          printf '    \t\t\t\t\t\t\t\t [ \e['${c_trgb}'m%s\e[m ] \n' \
                  "$_s_info"
 
         fi
@@ -332,7 +356,7 @@ function _sprintf() {
         if [[ "$_s_type" == "head" ]] ; then
 
           printf "\\e[2;3;38m   %s\\e[m\\n\\n" \
-          "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°"
+          "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°"
 
           if [[ "$s_color" == "true" ]] ; then
 
@@ -352,7 +376,7 @@ function _sprintf() {
 
             c_trgb="1;2;41"
 
-            printf '    \t\t\t\t\t\t\t        [ \e['${c_trgb}'m%s\e[m ] \n' \
+            printf '    \t\t\t\t\t\t\t\t [ \e['${c_trgb}'m%s\e[m ] \n' \
                    "$_s_info"
 
           else
@@ -369,6 +393,8 @@ function _sprintf() {
     fi
 
   fi
+
+  tput sgr0
 
   return "$_STATE"
 
@@ -421,7 +447,11 @@ function _init_cmd() {
 
   # Very important line:
   # We define the state of the output job from the background.
-  wait "$_pid" &>/dev/null && _state="0" || _state="1"
+  wait "$_pid" &>/dev/null && _state="0" || _state="$?"
+
+  _logger "info" \
+    "${_FUNCTION_ID}()" \
+    "exit code: $_state"
 
   # _endtime=$(date +%s)
 
@@ -461,6 +491,15 @@ function _init_cmd() {
            >>"${_dump_log}" 2>&1
 
   else
+
+    if [[ "$_state" -eq 254 ]] ; then
+
+      _th_local_color_fail="#F2D024"
+
+      _msg_pass="DONE"
+      _msg_fail="WARN"
+
+    fi
 
     # shellcheck disable=SC2154
     if [[ "$ignore_errors" -eq 0 ]] ; then
@@ -530,6 +569,8 @@ function _init_cmd() {
     fi
 
   fi
+
+  _th_local_color_fail="false"
 
   _STATE="$_state"
 
