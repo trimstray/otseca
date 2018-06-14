@@ -24,15 +24,30 @@ function _grep() {
   local _string="$1"
   local _file="$2"
 
+  # shellcheck disable=SC2155
+  local _xoutput=$(grep "$_string" "$_file" 2>/dev/null)
+
   if [[ -e "$_file" ]] ; then
 
-    grep "$_string" "$_file"
+    if [[ ! -z "$_xoutput" ]] ; then
 
-    _STATE="$?"
+      printf "%s\\n" "$_xoutput"
+
+      _STATE="1"
+
+    else
+
+      printf "string not found\\n"
+
+      _STATE="0"
+
+    fi
 
   else
 
-    _STATE="1"
+    printf "file not found\\n"
+
+    _STATE="254"
 
   fi
 
