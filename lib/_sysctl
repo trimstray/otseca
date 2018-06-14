@@ -24,17 +24,18 @@ function _sysctl() {
   local _sname="$1"
   local _value="$2"
 
-  sysctl "${_sname}"
+  # shellcheck disable=SC2155
+  local _xoutput=$(sysctl "${_sname}" 2>/dev/null)
 
-  sysctl "${_sname}" | grep -v "= ${_value}" > /dev/null 2>&1
+  if [[ ! "${_xoutput}" = *"= ${_value}"* ]] ; then
 
-  _STATE="$?"
-
-  if [[ "$_STATE" -eq 0 ]] ; then
+    printf "%s\\n" "$_xoutput"
 
     _STATE="0"
 
   else
+
+    printf "%s\\n" "$_xoutput"
 
     _STATE="1"
 
