@@ -7,22 +7,22 @@
 
 <p align="center">
   <a href="https://img.shields.io/badge/Branch-master-green.svg">
-    <img src="https://img.shields.io/badge/Branch-master-green.svg"
+    <img src="https://img.shields.io/badge/Branch-master-green.svg?longCache=true&style=for-the-badge"
         alt="Branch">
   </a>
   <a href="https://img.shields.io/badge/Version-v1.0.4-lightgrey.svg">
-    <img src="https://img.shields.io/badge/Version-v1.0.4-lightgrey.svg"
+    <img src="https://img.shields.io/badge/Version-v1.0.4-lightgrey.svg?longCache=true&style=for-the-badge"
         alt="Version">
   </a>
   <a href="https://img.shields.io/badge/Commands-150-orange.svg">
-    <img src="https://img.shields.io/badge/Commands-150-orange.svg"
+    <img src="https://img.shields.io/badge/Commands-150-orange.svg?longCache=true&style=for-the-badge"
         alt="Commands">
   </a>
   <a href="https://travis-ci.org/trimstray/otseca">
-    <img src="https://travis-ci.org/trimstray/otseca.svg?branch=master"
+    <img src="https://img.shields.io/travis/trimstray/otseca.svg?longCache=true&style=for-the-badge"
         alt="Travis-CI">
   <a href="http://www.gnu.org/licenses/">
-    <img src="https://img.shields.io/badge/license-GNU-blue.svg"
+    <img src="https://img.shields.io/badge/license-GNU-blue.svg?longCache=true&style=for-the-badge"
         alt="License">
   </a>
 </p>
@@ -49,8 +49,6 @@
 <br>
 
 ***
-
-<br>
 
 ## Introduction
 
@@ -91,7 +89,7 @@ otseca --ignore-failed --tasks system,network --output /tmp/report
 > If you do not want the script to be stopped after encountering errors add `--ignore-failed` script param.
 
 > **Hint 2**  
-> Only selected tasks using the `--tasks <task_1, task_2, task_n>` script param.
+> Only selected tasks using the `--tasks <task_1,task_2,task_n>` script param.
 
 ## Description
 
