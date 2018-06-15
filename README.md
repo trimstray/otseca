@@ -30,11 +30,11 @@
 <div align="center">
    <a href="#introduction">Introduction</a>&nbsp;&nbsp;|&nbsp;&nbsp;
    <a href="#description">Description</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-   <a href="#requirements">Requirements</a>&nbsp;&nbsp;|&nbsp;&nbsp;;
+   <a href="#requirements">Requirements</a>&nbsp;&nbsp;|&nbsp;&nbsp;
    <a href="#output">Output</a>&nbsp;&nbsp;|&nbsp;&nbsp;
    <a href="#parameters">Parameters</a>&nbsp;&nbsp;|&nbsp;&nbsp;
    <a href="#reports">Reports</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-   <a href="#how-it-works">How it works</a>&nbsp;&nbsp;|&nbsp;&nbsp;;
+   <a href="#how-it-works">How it works</a>&nbsp;&nbsp;|&nbsp;&nbsp;
    <a href="#other">Other</a>
 </div>
 
@@ -226,24 +226,30 @@ NETWORK_STACK=(\
 
 - **DONE** - informs that the command was executed correctly, most often it says that you did not find what you are looking for which is good information. The report is marked in **_green_**:
 
-<p align="center">
+  * from console output:<p align="center">
+    <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_uname_console_output.png"
+        alt="Master"></p>
+  * from report output:<p align="center">
     <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_uname_output.png"
-        alt="Master">
-</p>
+        alt="Master"></p>
 
-- **WARN** - informs that the command was not executed correctly (syntax error, no command, etc.). The report is marked in **_yellow_**:
+- **WARN** - informs that the command was not executed correctly (syntax error, no command, file not found etc.). The report is marked in **_yellow_**:
 
-<p align="center">
+  * from console output:<p align="center">
+    <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_sestatus_console_output.png"
+        alt="Master"></p>
+  * from report output:<p align="center">
     <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_sestatus_output.png"
-        alt="Master">
-</p>
+        alt="Master"></p>
 
 - **TRUE** - informs that the command was executed correctly and found what we were looking for, e.g. too wide permissions for the file `/etc/sudoers`. The report is marked in **_red_**:
 
-<p align="center">
+  * from console output:<p align="center">
+    <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_systemctl_rsync_console_output.png"
+        alt="Master"></p>
+  * from report output:<p align="center">
     <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_systemctl_rsync_output.png"
-        alt="Master">
-</p>
+        alt="Master"></p>
 
 ## Other
 
