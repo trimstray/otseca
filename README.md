@@ -56,7 +56,7 @@
 
 ### The main goal
 
-The main assumption of creating this tool was easier and faster delivery of commands sets to be performed on customer environments in order to obtain the most useful information about the system elements on which penetration test and audits were to be performed.
+The main assumption of creating this tool was **easier** and **faster** delivery of **commands sets** to be performed on customer environments in order to obtain the most useful information about the system elements on which penetration test and audits were to be performed.
 
 ### For whom?
 
