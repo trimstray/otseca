@@ -56,9 +56,9 @@
 
 ### The main goal
 
-The main assumption of creating this tool was **easier** and **faster** delivery of **commands sets** to be performed on customer environments in order to obtain the most useful information about the system elements on which penetration test and audits were to be performed.
+The main assumption of creating this tool was **easier** and **faster** delivery of **commands sets** to be performed on customer environments. As a result of such a scan I wanted to get the most useful information about system components that will be subjected to penetration tests and audits at a later time.
 
-### For whom?
+### For whom
 
 **Otseca** facilitates collection of many important information about a given system.
 
