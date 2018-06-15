@@ -6,11 +6,11 @@
 <h4 align="center">Open source security auditing tool to search and dump system configuration.</h4>
 
 <p align="center">
-  <a href="https://img.shields.io/badge/Branch-master-green.svg">
+  <a href="https://github.com/trimstray/otseca/tree/master">
     <img src="https://img.shields.io/badge/Branch-master-green.svg?longCache=true&style=for-the-badge"
         alt="Branch">
   </a>
-  <a href="https://img.shields.io/badge/Version-v1.0.4-lightgrey.svg">
+  <a href="https://github.com/trimstray/otseca/releases/tag/v1.0.4">
     <img src="https://img.shields.io/badge/Version-v1.0.4-lightgrey.svg?longCache=true&style=for-the-badge"
         alt="Version">
   </a>
@@ -51,6 +51,10 @@
 ***
 
 ## Introduction
+
+### The main goal
+
+The main assumption of creating this tool was easier and faster delivery of commands to be performed on customer environments in order to obtain the most useful information about the system elements on which penetrant tests and audits were to be performed.
 
 ### For whom?
 
