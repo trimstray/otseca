@@ -28,13 +28,13 @@
 </p>
 
 <div align="center">
-   <a href="#introduction">Introduction</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-   <a href="#description">Description</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-   <a href="#requirements">Requirements</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-   <a href="#output">Output</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-   <a href="#parameters">Parameters</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-   <a href="#reports">Reports</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-   <a href="#how-it-works">How it works</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+   <a href="#introduction">Introduction</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+   <a href="#description">Description</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+   <a href="#requirements">Requirements</a>&nbsp;&nbsp;|&nbsp;&nbsp;;
+   <a href="#output">Output</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+   <a href="#parameters">Parameters</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+   <a href="#reports">Reports</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+   <a href="#how-it-works">How it works</a>&nbsp;&nbsp;|&nbsp;&nbsp;;
    <a href="#other">Other</a>
 </div>
 
@@ -81,7 +81,7 @@ cd otseca
 ./setup.sh install
 
 # Run the app
-otseca --ignore-failed --tasks system,network
+otseca --ignore-failed --tasks system,network --output /tmp/report
 ```
 
 > * symlink to `bin/otseca` is placed in `/usr/local/bin`
@@ -169,20 +169,10 @@ The report that can be performed consists of the following sections (stacks):
 - **network** - dump info from network layer (output file: network.all.log.html)
 - **external** - all external, also user tasks or included from `etc/` directory (output file: external.all.log.html)
 
-HTML reports consist of the following blocks:
-
-<p align="center">
-    <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_uname_output.png"
-        alt="Master">
-</p>
+HTML reports consist of the following blocks (example):
 
 <p align="center">
     <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_service_output.png"
-        alt="Master">
-</p>
-
-<p align="center">
-    <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_systemctl_rsync_output.png"
         alt="Master">
 </p>
 
@@ -190,7 +180,7 @@ HTML reports consist of the following blocks:
 
 ### Tasks
 
-**Otseca** divides his work into **tasks**. Each sets of tasks performs defined commands (eg from the file `etc/otseca.conf`). By default six tasks are available: **system**, **kernel**, **permissions**, **services**, **network** and **external**.
+**Otseca** divides his work into **tasks**. Each sets of tasks performs defined commands (eg. from the file `etc/otseca.conf`). By default six tasks are available: **system**, **kernel**, **permissions**, **services**, **network** and **external**.
 
 By default, all tasks are performed but you can specify them with the `--tasks` parameter giving one or many tasks as an argument. For example:
 
@@ -234,9 +224,26 @@ NETWORK_STACK=(\
 
 **Otseca** supports three output (response) states:
 
-- **DONE** - informs that the command was executed correctly, most often it says that you did not find what you are looking for which is good information. The report is marked in _green_
-- **WARN** - informs that the command was not executed correctly (syntax error, no command, etc.). The report is marked in _yellow_
-- **TRUE** - informs that the command was executed correctly and found what we were looking for, e.g. too wide permissions for the file `/etc/sudoers`. The report is marked in _red_
+- **DONE** - informs that the command was executed correctly, most often it says that you did not find what you are looking for which is good information. The report is marked in **_green_**:
+
+<p align="center">
+    <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_uname_output.png"
+        alt="Master">
+</p>
+
+- **WARN** - informs that the command was not executed correctly (syntax error, no command, etc.). The report is marked in **_yellow_**:
+
+<p align="center">
+    <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_sestatus_output.png"
+        alt="Master">
+</p>
+
+- **TRUE** - informs that the command was executed correctly and found what we were looking for, e.g. too wide permissions for the file `/etc/sudoers`. The report is marked in **_red_**:
+
+<p align="center">
+    <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_systemctl_rsync_output.png"
+        alt="Master">
+</p>
 
 ## Other
 
