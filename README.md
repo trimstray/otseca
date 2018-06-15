@@ -5,6 +5,8 @@
 
 <h4 align="center">Open source security auditing tool to search and dump system configuration.</h4>
 
+<br>
+
 <p align="center">
   <a href="https://github.com/trimstray/otseca/tree/master">
     <img src="https://img.shields.io/badge/Branch-master-green.svg?longCache=true&style=for-the-badge"
@@ -54,7 +56,7 @@
 
 ### The main goal
 
-The main assumption of creating this tool was easier and faster delivery of commands to be performed on customer environments in order to obtain the most useful information about the system elements on which penetrant tests and audits were to be performed.
+The main assumption of creating this tool was easier and faster delivery of commands sets to be performed on customer environments in order to obtain the most useful information about the system elements on which penetration test and audits were to be performed.
 
 ### For whom?
 
@@ -62,11 +64,13 @@ The main assumption of creating this tool was easier and faster delivery of comm
 
 It is useful for:
 
-- pentesters
-- security researchers
-- system administrators
-- security professionals
-- hackers
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;:ballot_box_with_check: pentesters<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:ballot_box_with_check: security researchers<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:ballot_box_with_check: system administrators<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:ballot_box_with_check: security professionals<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:ballot_box_with_check: hackers<br>
+</p>
 
 ### How To Use
 
