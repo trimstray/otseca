@@ -12,8 +12,8 @@
     <img src="https://img.shields.io/badge/Branch-master-green.svg?longCache=true&style=for-the-badge"
         alt="Branch">
   </a>
-  <a href="https://github.com/trimstray/otseca/releases/tag/v1.0.4">
-    <img src="https://img.shields.io/badge/Version-v1.0.4-lightgrey.svg?longCache=true&style=for-the-badge"
+  <a href="https://github.com/trimstray/otseca/releases/tag/v1.0.5">
+    <img src="https://img.shields.io/badge/Version-v1.0.5-lightgrey.svg?longCache=true&style=for-the-badge"
         alt="Version">
   </a>
   <a href="https://img.shields.io/badge/Commands-150-orange.svg">
@@ -143,7 +143,7 @@ Below is a list of available options:
         --help                      show this message
      -f|--format <key>              set output format (key: html/raw-html)
      -t|--tasks <key>               set specific task to do
-                                    (key: system, kernel, permissions, services, network, external)
+                                    (key: system, kernel, permissions, services, network, distro, external)
      -o|--output <path>             set path to output directory report
         --show-errors               show stderr to output
         --ignore-failed             do not exit with nonzero on commands failed
@@ -173,6 +173,7 @@ The report that can be performed consists of the following sections (stacks):
 - **permissions**  - dump info about permissions (output file: permissions.all.log.html)
 - **services** - dump info about system services (output file: services.all.log.html)
 - **network** - dump info from network layer (output file: network.all.log.html)
+- **distro** - dump info about specific distribution (output file: distro.all.log.html)
 - **external** - all external, also user tasks or included from `etc/` directory (output file: external.all.log.html)
 
 HTML reports consist of the following blocks (example):
@@ -186,7 +187,7 @@ HTML reports consist of the following blocks (example):
 
 ### Tasks
 
-**Otseca** divides his work into **tasks**. Each sets of tasks performs defined commands (eg. from the file `etc/otseca.conf`). By default six tasks are available: **system**, **kernel**, **permissions**, **services**, **network** and **external**.
+**Otseca** divides his work into **tasks**. Each sets of tasks performs defined commands (eg. from the file `etc/otseca.conf`). By default six tasks are available: **system**, **kernel**, **permissions**, **services**, **network**, **distro** and **external**.
 
 By default, all tasks are performed but you can specify them with the `--tasks` parameter giving one or many tasks as an argument. For example:
 

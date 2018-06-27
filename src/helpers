@@ -305,7 +305,9 @@ function _sprintf() {
 
         if [[ "$s_color" == "true" ]] ; then
 
-          if [[ "$_msg_fail" == "WARN" ]] ; then
+          # For use _msg_fail="ERRO" in _exec_ if-else condition.
+          # if [[ "$_msg_fail" == "WARN" ]] ; then
+          if [[ "$_msg_fail" == "WARNX" ]] ; then
 
             c_trgb="1;1;33"
 
@@ -330,6 +332,10 @@ function _sprintf() {
         if [[ "$s_color" == "true" ]] ; then
 
           if [[ "$_msg_fail" == "WARN" ]] ; then
+
+            c_trgb="1;1;33"
+
+          elif [[ "$_msg_fail" == "ERRO" ]] ; then
 
             c_trgb="1;1;33"
 
@@ -473,6 +479,7 @@ function _init_cmd() {
 
   # shellcheck disable=SC2034
   _th_global_color="#0074D9"
+  _th_local_color_fail="false"
 
   if [[ "$_state" -eq 0 ]] ; then
 
@@ -735,7 +742,7 @@ function _help_() {
         --help                      show this message
      -f|--format <key>              set output format (key: html/raw-html)
      -t|--tasks <key>               set specific task to do
-                                    (key: system, kernel, permissions, services, network, external)
+                                    (key: system, kernel, permissions, services, network, distro, external)
      -o|--output <path>             set path to output directory report
         --show-errors               show stderr to output
         --ignore-failed             do not exit with nonzero on commands failed
