@@ -24,7 +24,7 @@ function __main__() {
   readonly _log_path="${_log_directory}/${_log_file}"
 
   # Set script version.
-  local _version="v1.0.4"
+  local _version="v1.0.5"
 
   # We check if we are a root user.
   if [[ "$EUID" -ne 0 ]] ; then
@@ -454,9 +454,10 @@ function __main__() {
   _tasks_permissions=1
   _tasks_services=1
   _tasks_network=1
+  _tasks_distro=1
   _tasks_external=1
 
-  _fixed_tasks_num=6
+  _fixed_tasks_num=7
 
   _xcount=1
 
@@ -542,6 +543,42 @@ function __main__() {
 
       # shellcheck disable=SC2034
       _tasks_network=0
+
+    fi
+
+    if [[ "$tasks_type" = *"distro"* ]] || [[ -z "$tasks_type" ]] ; then
+
+      if [[ "$_tasks_distro" -eq 1 ]] ; then
+
+        if [[ -f /etc/debian_version ]] ; then
+
+          # shellcheck disable=SC2034
+          DISTRO_STACK=("${DEBIAN_STACK[@]}")
+
+        elif [[ -f /etc/SuSe-release ]] ; then
+
+          true
+
+        elif [[ -f /etc/redhat-release ]] ; then
+
+          # shellcheck disable=SC2034
+          DISTRO_STACK=("${CENTOS_STACK[@]}")
+
+        else
+
+          true
+
+        fi
+
+        # shellcheck disable=SC2034
+        _STACK=("${DISTRO_STACK[@]}")
+
+        InitTasks "distro"
+
+      fi
+
+      # shellcheck disable=SC2034
+      _tasks_distro=0
 
     fi
 
