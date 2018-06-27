@@ -55,7 +55,7 @@ function InitTasks() {
         # shellcheck disable=SC2034
         _msg_pass="DONE"
         # shellcheck disable=SC2034
-        _msg_fail="EXIT"
+        _msg_fail="WARN"
 
         # shellcheck disable=SC2034
         # _th_local_color_fail="#606F7B"
