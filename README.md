@@ -66,9 +66,9 @@ It is useful for:
 
 <p>
 &nbsp;&nbsp;&nbsp;&nbsp;:ballot_box_with_check: system administrators<br>
-&nbsp;&nbsp;&nbsp;&nbsp;:ballot_box_with_check: pentesters<br>
 &nbsp;&nbsp;&nbsp;&nbsp;:ballot_box_with_check: security researchers<br>
 &nbsp;&nbsp;&nbsp;&nbsp;:ballot_box_with_check: security professionals<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:ballot_box_with_check: pentesters<br>
 &nbsp;&nbsp;&nbsp;&nbsp;:ballot_box_with_check: hackers<br>
 </p>
 
