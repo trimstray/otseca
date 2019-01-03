@@ -1,4 +1,12 @@
 # This is where the result of the script output.
-log/
-tmp/
-data/
+log/*
+!/log/.gitkeep
+
+# Temporary files.
+tmp/*
+!/tmp/.gitkeep
+
+# Default path for output.
+data/*
+!/data/.gitkeep
+!/data/output/.gitkeep
