@@ -43,9 +43,7 @@
 <div align="center">
   <sub>Created by
   <a href="https://twitter.com/trimstray">trimstray</a> and
-  <a href="https://github.com/trimstray/otseca/graphs/contributors">
-    contributors
-  </a>
+  <a href="https://github.com/trimstray/otseca/graphs/contributors">contributors</a>
 </div>
 
 <br>
@@ -93,10 +91,10 @@ otseca --ignore-failed --tasks system,network --output /tmp/report
 > * symlink to `bin/otseca` is placed in `/usr/local/bin`
 > * man page is placed in `/usr/local/man/man8`
 
-> **Hint 1**  
+> **Hint 1**
 > If you do not want the script to be stopped after encountering errors add `--ignore-failed` script param.
 
-> **Hint 2**  
+> **Hint 2**
 > Only selected tasks using the `--tasks <task_1,task_2,task_n>` script param.
 
 ## Description
@@ -111,7 +109,7 @@ After the scan finishes, a report is generated to examine specific nooks of the 
 
 This tool working with:
 
-- **GNU/Linux** (testing on Debian and CentOS)  
+- **GNU/Linux** (testing on Debian and CentOS)
 - **Bash** (testing on 4.4.19)
 
 Also you will need **root access**.
