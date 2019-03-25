@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_logo.png"
+    <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_logo.png"
         alt="Master">
 </p>
 
@@ -119,7 +119,7 @@ Also you will need **root access**.
 An exemplary result of the process of collecting information from the local system:
 
 <p align="center">
-    <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_output.png"
+    <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_output.png"
         alt="Master">
 </p>
 
@@ -158,7 +158,7 @@ Below is a list of available options:
 It's the main file which contains a list of reports such as system or network.
 
 <p align="center">
-    <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_index_output.png"
+    <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_index_output.png"
         alt="Master">
 </p>
 
@@ -177,7 +177,7 @@ The report that can be performed consists of the following sections (stacks):
 HTML reports consist of the following blocks (example):
 
 <p align="center">
-    <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_service_output.png"
+    <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_service_output.png"
         alt="Master">
 </p>
 
@@ -232,28 +232,28 @@ NETWORK_STACK=(\
 - **DONE** - informs that the command was executed correctly, most often it says that you did not find what you are looking for which is good information. The report is marked in **_green_**:
 
   * from console output:<p align="center">
-    <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_uname_console_output.png"
+    <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_uname_console_output.png"
         alt="Master"></p>
   * from report output:<p align="center">
-    <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_uname_output.png"
+    <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_uname_output.png"
         alt="Master"></p>
 
 - **WARN** - informs that the command was not executed correctly (syntax error, no command, file not found etc.). The report is marked in **_yellow_**:
 
   * from console output:<p align="center">
-    <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_sestatus_console_output.png"
+    <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_sestatus_console_output.png"
         alt="Master"></p>
   * from report output:<p align="center">
-    <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_sestatus_output.png"
+    <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_sestatus_output.png"
         alt="Master"></p>
 
 - **TRUE** - informs that the command was executed correctly and found what we were looking for, e.g. too wide permissions for the file `/etc/sudoers`. The report is marked in **_red_**:
 
   * from console output:<p align="center">
-    <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_systemctl_rsync_console_output.png"
+    <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_systemctl_rsync_console_output.png"
         alt="Master"></p>
   * from report output:<p align="center">
-    <img src="https://github.com/trimstray/otseca/blob/master/doc/img/otseca_systemctl_rsync_output.png"
+    <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_systemctl_rsync_output.png"
         alt="Master"></p>
 
 ## Other
