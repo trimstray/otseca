@@ -1,6 +1,5 @@
 <p align="center">
-    <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_logo.png"
-        alt="Master">
+  <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_logo.png" alt="Master">
 </p>
 
 <h4 align="center">Open source security auditing tool to search and dump system configuration.</h4>
@@ -8,24 +7,17 @@
 <br>
 
 <p align="center">
-  <a href="https://github.com/trimstray/otseca/tree/master">
-    <img src="https://img.shields.io/badge/Branch-master-green.svg?longCache=true&style=for-the-badge"
-        alt="Branch">
+  <a href="https://travis-ci.org/trimstray/otseca">
+    <img src="https://img.shields.io/travis/trimstray/otseca.svg?longCache=true&style=for-the-badge" alt="Travis-CI">
   </a>
   <a href="https://github.com/trimstray/otseca/releases/tag/v1.0.5">
-    <img src="https://img.shields.io/badge/Version-v1.0.5-lightgrey.svg?longCache=true&style=for-the-badge"
-        alt="Version">
+    <img src="https://img.shields.io/badge/Version-v1.0.5-lightgrey.svg?longCache=true&style=for-the-badge" alt="Version">
   </a>
   <a href="https://img.shields.io/badge/Commands-169-orange.svg">
-    <img src="https://img.shields.io/badge/Commands-169-orange.svg?longCache=true&style=for-the-badge"
-        alt="Commands">
+    <img src="https://img.shields.io/badge/Commands-169-orange.svg?longCache=true&style=for-the-badge" alt="Commands">
   </a>
-  <a href="https://travis-ci.org/trimstray/otseca">
-    <img src="https://img.shields.io/travis/trimstray/otseca.svg?longCache=true&style=for-the-badge"
-        alt="Travis-CI">
   <a href="http://www.gnu.org/licenses/">
-    <img src="https://img.shields.io/badge/license-GNU-blue.svg?longCache=true&style=for-the-badge"
-        alt="License">
+    <img src="https://img.shields.io/badge/license-GNU-blue.svg?longCache=true&style=for-the-badge" alt="License">
   </a>
 </p>
 
@@ -119,8 +111,7 @@ Also you will need **root access**.
 An exemplary result of the process of collecting information from the local system:
 
 <p align="center">
-    <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_output.png"
-        alt="Master">
+  <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_output.png" alt="Master">
 </p>
 
 ## Parameters
@@ -158,8 +149,7 @@ Below is a list of available options:
 It's the main file which contains a list of reports such as system or network.
 
 <p align="center">
-    <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_index_output.png"
-        alt="Master">
+  <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_index_output.png" alt="Master">
 </p>
 
 ### Tasks reports
@@ -177,8 +167,7 @@ The report that can be performed consists of the following sections (stacks):
 HTML reports consist of the following blocks (example):
 
 <p align="center">
-    <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_service_output.png"
-        alt="Master">
+  <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_service_output.png" alt="Master">
 </p>
 
 ## How it works
@@ -232,29 +221,23 @@ NETWORK_STACK=(\
 - **DONE** - informs that the command was executed correctly, most often it says that you did not find what you are looking for which is good information. The report is marked in **_green_**:
 
   * from console output:<p align="center">
-    <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_uname_console_output.png"
-        alt="Master"></p>
+    <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_uname_console_output.png" alt="Master"></p>
   * from report output:<p align="center">
-    <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_uname_output.png"
-        alt="Master"></p>
+    <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_uname_output.png" alt="Master"></p>
 
 - **WARN** - informs that the command was not executed correctly (syntax error, no command, file not found etc.). The report is marked in **_yellow_**:
 
   * from console output:<p align="center">
-    <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_sestatus_console_output.png"
-        alt="Master"></p>
+    <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_sestatus_console_output.png" alt="Master"></p>
   * from report output:<p align="center">
-    <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_sestatus_output.png"
-        alt="Master"></p>
+    <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_sestatus_output.png" alt="Master"></p>
 
 - **TRUE** - informs that the command was executed correctly and found what we were looking for, e.g. too wide permissions for the file `/etc/sudoers`. The report is marked in **_red_**:
 
   * from console output:<p align="center">
-    <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_systemctl_rsync_console_output.png"
-        alt="Master"></p>
+    <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_systemctl_rsync_console_output.png" alt="Master"></p>
   * from report output:<p align="center">
-    <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_systemctl_rsync_output.png"
-        alt="Master"></p>
+    <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_systemctl_rsync_output.png" alt="Master"></p>
 
 ## Other
 
@@ -264,7 +247,7 @@ See **[this](CONTRIBUTING.md)**.
 
 ### Project architecture
 
-See **<a href="https://github.com/trimstray/otseca/wiki/Project-architecture">this</a>**.
+See **[this](https://github.com/trimstray/otseca/wiki/Project-architecture)**.
 
 ## License
 
