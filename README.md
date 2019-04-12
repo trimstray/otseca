@@ -1,5 +1,7 @@
 <p align="center">
-  <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_logo.png" alt="Master">
+  <a href="https://github.com/trimstray/otseca">
+    <img src="https://github.com/trimstray/otseca/blob/master/static/img/otseca_logo.png" alt="Master">
+  </a>
 </p>
 
 <h4 align="center">Open source security auditing tool to search and dump system configuration.</h4>
