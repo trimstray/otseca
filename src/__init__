@@ -405,12 +405,14 @@ function __main__() {
   else
 
     # shellcheck disable=SC2154
-    if [[ ! -d "$_out" ]] ; then
+    if [[ ! -d "$output_path" ]] ; then
 
-      mkdir -p "$_out"
+      mkdir -p "$output_path"
 
       printf "     \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m\\n" \
              "•" "create output directory"
+
+      _out="$output_path"
 
       _logger "info" \
         "${_FUNCTION_ID}()" \
