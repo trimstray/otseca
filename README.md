@@ -245,7 +245,7 @@ NETWORK_STACK=(\
 
 ### Contributing
 
-See **[this](CONTRIBUTING.md)**.
+See **[this](.github/CONTRIBUTING.md)**.
 
 ### Project architecture
 
