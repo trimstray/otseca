@@ -34,6 +34,8 @@
    <a href="#other">Other</a>
 </div>
 
+<br>
+
 <div align="center">
   <sub>Created by
   <a href="https://twitter.com/trimstray">trimstray</a> and
