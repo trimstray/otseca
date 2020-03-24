@@ -118,7 +118,7 @@ function __main__() {
 
   # Specifies the call parameters of the script, the exact description
   # can be found in _help_ and file README.md.
-  local _short_opt="f:t:o"
+  local _short_opt="f:t:o:"
   local _long_opt="help,format:,tasks:,output:,show-errors,ignore-failed"
 
   _GETOPT_PARAMS=$(getopt -o "${_short_opt}" --long "${_long_opt}" \
@@ -380,47 +380,25 @@ function __main__() {
 
   if [[ ! -z "$output_path" ]] ; then
 
-    if [[ ! -d "$output_path" ]] ; then
-
-      mkdir -p "$output_path"
-
-      _logger "info" \
-        "${_FUNCTION_ID}()" \
-        "create output directory: $_out"
-
-      printf "     \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m\\n" \
-             "•" "create output directory"
-
-    fi
-
-    _out="$output_path"
+    mkdir -p "$output_path"
 
     _logger "info" \
       "${_FUNCTION_ID}()" \
-      "set output directory: $_out"
+      "create output directory: $output_path"
 
     printf "     \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m\\n" \
-           "•" "set output directory"
+           "•" "create output directory: $output_path"
 
-  else
-
-    # shellcheck disable=SC2154
-    if [[ ! -d "$output_path" ]] ; then
-
-      mkdir -p "$output_path"
-
-      printf "     \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m\\n" \
-             "•" "create output directory"
-
-      _out="$output_path"
-
-      _logger "info" \
-        "${_FUNCTION_ID}()" \
-        "create output directory: $_out"
-
-    fi
+    _out="$output_path"
 
   fi
+
+  _logger "info" \
+    "${_FUNCTION_ID}()" \
+    "set output directory: $_out"
+
+  printf "     \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m\\n" \
+         "•" "set output directory: $_out"
 
   printf "     \\e[2;2;37m%s\\e[m \\e[1;1;38m%s\\e[m\\n" \
          "•" "set dump directory: dump.${_sdate}"
